@@ -21,6 +21,25 @@ class PlayerManager extends AbstractManager
         $player = new Player($result["id"],$result["nickname"],$result["bio"],$result["portrait"], $result["team"]);
         return $player;
     }
+    public function getAllPlayer() : array
+    {
+        $query = $this->db->prepare("SELECT players.id , players.nickname,media.url as logo ,players.team FROM players 
+                                            JOIN media on players.portrait = media.id  ");
+        $parameters = [
+
+        ];
+        $query->execute($parameters);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $players = [];
+
+        foreach($results as $result)
+        {
+            $player = new Player($result["id"],$result["nickname"],$result["bio"],$result["portrait"], $result["team"]);
+            $players[] = $player;
+        }
+        return $players;
+    }
+
 
 }
 
