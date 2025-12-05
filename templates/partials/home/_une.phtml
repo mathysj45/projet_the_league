@@ -2,13 +2,14 @@
     <section class="une_team">
         <h2>TEAM À LA UNE</h2>
         <div class="row_une"> 
-            
+            <p><?= $teams[0]->getLogo(); ?></p>
             <img class="img_une" src="<?= $teams[0]->getLogo(); ?>" alt="">
 
             <div class="column_une">
                 <h3><?= $teams[0]->getName(); ?></h3>
                 <p>Les players</p>
                 <?php foreach ($teams[0]->getPlayers() as $player){ ?>
+                    
                     <p><?= $player->getNickname() ?></p>
                     <img src="<?= $player->getPortrait() ?>" alt="" >
                 <?php } ?>
