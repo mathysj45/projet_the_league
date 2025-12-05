@@ -13,6 +13,5 @@ require "controllers/DefaultController.php";
 require "controllers/PageController.php";
 
 require "services/Router.php";
-require "data/data.php";
 
 

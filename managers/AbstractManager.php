@@ -7,11 +7,11 @@ abstract class AbstractManager
     {
         $host = "localhost";
         $port = "3306";
-        $dbname = "The league";
+        $dbname = "the_league";
         $connexionString = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8";
 
         $user = "root";
-        $password = "";
+        $password = "demopma";
 
         $this->db = new PDO(
             $connexionString,
