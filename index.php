@@ -3,4 +3,6 @@
 require "config/autoload.php";
 
 $router = new Router();
-$router->handleRequest();
+$router->handleRequest($_GET);
+
+?>
