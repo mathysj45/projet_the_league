@@ -1,6 +1,20 @@
 <main>
     <section class="une_team">
         <h2>TEAM À LA UNE</h2>
+        <div class="row_une"> 
+            <img class="img_une" src='./assets/images/<?=  ?>' alt="logo chouette">
+            <div class="column_une">
+                <h3><?= $data['name_team'] ?></h3>
+                <p>Les players</p>
+                <?php foreach($data['owl_team'] as $prices)
+                    { ?>
+                <div class="tuiles">
+                    <img class="img_perso_une" src='./assets/images/<?=  ?>' alt="membrechouette">
+                    <h4><?= $prices['name']?></h4>
+                </div>
+            </div>
+            </div>
+        <?php } ?>
         
         <h3><?php echo  $salut ?></h3>
         
