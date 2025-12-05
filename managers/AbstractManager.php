@@ -7,7 +7,7 @@ abstract class AbstractManager
     {
         $host = "localhost";
         $port = "3306";
-        $dbname = "the_league";
+        $dbname = "coda_manager";
         $connexionString = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8";
 
         $user = "root";
