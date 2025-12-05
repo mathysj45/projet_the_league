@@ -23,8 +23,8 @@ class PlayerManager extends AbstractManager
     }
     public function getAllPlayers() : array
     {
-        $query = $this->db->prepare("SELECT players.id , players.nickname,media.url as logo ,players.team FROM players 
-                                            JOIN media on players.portrait = media.id  ");
+        $query = $this->db->prepare("SELECT players.id , players.nickname,players.bio,media.url as portrait ,players.team FROM players 
+                                            JOIN media on players.portrait = media.id");
         $parameters = [
 
         ];

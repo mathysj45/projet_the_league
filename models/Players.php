@@ -4,10 +4,10 @@ class Player {
     private int $id;
     private string $nickname;
     private string $bio;
-    private int $portrait;
-    private Team $team;
+    private  $portrait;
+    private  $team;
 
-    public function __construct(int $id, string $nickname, string $bio, int $portrait, Team $team) {
+    public function __construct(int $id, string $nickname, string $bio,  $portrait, $team) {
         $this->id = $id;
         $this->nickname = $nickname;
         $this->bio = $bio;
