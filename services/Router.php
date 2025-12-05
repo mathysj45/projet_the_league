@@ -3,21 +3,21 @@
     {
         public function handleRequest(array $get) : void
         {
-            if(isset($_GET["route"]))
+            if(isset($get["route"]))
             {
-                if($_GET["route"] === "team")
+                if($get["route"] === "team")
                 {
                     $ctrl = new PageController();
                     $ctrl->team();
                 }
 
-                else if ($_GET["route"] === "player")
+                else if ($get["route"] === "player")
                 {
                     $ctrl = new PageController();
                     $ctrl->player();
                 }
 
-                else if ($_GET["route"] === "match")
+                else if ($get["route"] === "match")
                 {
                     $ctrl = new PageController();
                     $ctrl->match();

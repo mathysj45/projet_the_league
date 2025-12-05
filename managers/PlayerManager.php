@@ -17,7 +17,8 @@ class PlayerManager extends AbstractManager
             'id' => $id
         ];
         $query->execute($parameters);
-        $player = $query->fetch(PDO::FETCH_ASSOC);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $player = new Player($result["id"],$result["nickname"],$result["bio"],$result["portrait"], $result["team"]);
         return $player;
     }
 

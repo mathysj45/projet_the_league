@@ -10,7 +10,8 @@ class TeamManager extends AbstractManager
 
     public function getAllTeam() : array
     {
-        $query = $this->db->prepare('SELECT * FROM teams' );
+        $query = $this->db->prepare("SELECT teams.id , teams.name, teams.description ,media.url AS logo FROM teams
+                                            JOIN media on teams.logo = media.id ");
         $parameters = [
 
         ];
@@ -28,13 +29,24 @@ class TeamManager extends AbstractManager
 
     public function getTeamById(int $id) : Team
     {
-        $query = $this->db->prepare('SELECT * FROM teams WHERE id = :id' );
+        $query = $this->db->prepare('SELECT teams.id , teams.name, teams.description ,media.url as logo FROM teams
+                                            JOIN media on teams.logo = media.id 
+                                            WHERE id = :id' );
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
-        $team = $query->fetch(PDO::FETCH_ASSOC);
-        return $team;
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        if ($result){
+            
+            
+            $team = new Team($result["id"],$result["name"],$result["description"],$result["logo"]);
+            
+            return $team;
+        }else
+        {
+            return null;
+        }
     }
 
 }
