@@ -8,7 +8,7 @@ class GameManager extends AbstractManager
     
     }
 
-    public function getAllGame() : array
+    public function getAllGames() : array
     {
         $query = $this->db->prepare("SELECT * FROM games");
         $parameters = [
