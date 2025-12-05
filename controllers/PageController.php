@@ -5,7 +5,7 @@
 
 class PageController extends AbstractController 
 {
-    --- ACCUEIL ---
+    // --- ACCUEIL ---
     public function home() : void
     {
         $teamManager = new TeamManager();
