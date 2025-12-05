@@ -26,11 +26,16 @@ class TeamManager extends AbstractManager
         return $teams;
     }
 
-    public function getUserById(int $id) : User
+    public function getTeamById(int $id) : Team
     {
-    
+        $query = $this->db->prepare('SELECT * FROM teams WHERE id = :id' );
+        $parameters = [
+            'id' => $id
+        ];
+        $query->execute($parameters);
+        $team = $query->fetch(PDO::FETCH_ASSOC);
+        return $team;
     }
 
-    // ...
 }
 
