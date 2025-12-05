@@ -8,20 +8,23 @@ class PageController extends AbstractController
     // --- ACCUEIL ---
     public function home() : void
     {
-        $teamManager = new TeamManager();
-        $playerManager = new PlayerManager();
-        $matchManager = new MatchManager();
+    //     $teamManager = new TeamManager();
+    //     $playerManager = new PlayerManager();
+    //     $matchManager = new MatchManager();
 
-        $teams = $teamManager->getAllTeam();
-        $players = $playerManager->getAllPlayers();
-        $matches = $matchManager->getAllMatches();
+    //     $teams = $teamManager->getAllTeam();
+    //     $players = $playerManager->getAllPlayers();
+    //     $matches = $matchManager->getAllMatches();
 
-        $this->render("home", [
-            "pageTitle" => "The League",
-            "teams" => $teams,
-            "players" => $players,
-            "matches" => $matches
-        ]);
+    //     $this->render("home", [
+    //         "pageTitle" => "The League",
+    //         "teams" => $teams,
+    //         "players" => $players,
+    //         "matches" => $matches
+    //     ]);
+
+        $this->render("home", ["pageTitle" => "The league"]);
+
 
     }
     // --- GESTION DES ÉQUIPES ---
