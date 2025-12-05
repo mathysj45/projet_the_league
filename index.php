@@ -4,7 +4,7 @@ require "config/autoload.php";
 
 $router = new Router();
 $router->handleRequest($_GET);
-
-$salut = "truc";    
+$TeamManager = new TeamManager();
+$data["teams"] = $TeamManager->getTeamById(1);
 
 ?>
