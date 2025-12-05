@@ -1,0 +1,10 @@
+<footer>
+    <img src="./assets/images/<?= $data['logo'] ?>" alt="logo">
+    <p>Copyright - Les dieux du code</p>
+    <ul>
+        <?php foreach ($data['links'] as $list) 
+        { ?>
+        <li><?= $list ?></li>
+        <?php } ?>
+    </ul>
+</footer>
