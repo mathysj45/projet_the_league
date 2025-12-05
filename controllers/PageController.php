@@ -8,25 +8,6 @@ class PageController extends AbstractController
     // --- ACCUEIL ---
     public function home() : void
     {
-<<<<<<< HEAD
-    //     $teamManager = new TeamManager();
-    //     $playerManager = new PlayerManager();
-    //     $matchManager = new MatchManager();
-
-    //     $teams = $teamManager->getAllTeam();
-    //     $players = $playerManager->getAllPlayers();
-    //     $matches = $matchManager->getAllMatches();
-
-    //     $this->render("home", [
-    //         "pageTitle" => "The League",
-    //         "teams" => $teams,
-    //         "players" => $players,
-    //         "matches" => $matches
-    //     ]);
-
-        $this->render("home", ["pageTitle" => "The league"]);
-
-=======
         $teamManager = new TeamManager();
         $playerManager = new PlayerManager();
         $gameManager = new GameManager();
@@ -41,7 +22,6 @@ class PageController extends AbstractController
             "players" => $players,
             "matches" => $games
         ]);
->>>>>>> df63f18776626a88a7dd781b814d9e31db2e080b
 
     }
 
