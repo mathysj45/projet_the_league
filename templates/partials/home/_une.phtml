@@ -6,17 +6,18 @@
             <div class="column_une">
                 <h3><?= $data['name_team'] ?></h3>
                 <p>Les players</p>
-                <?php foreach($data['owl_team'] as $prices)
+                <?php foreach($data['owl_team'] as $owl_team)
                     { ?>
                 <div class="tuiles">
                     <img class="img_perso_une" src='./assets/images/' alt="membrechouette">
+<<<<<<< HEAD
+                    <h4><?= $owl_team['name']?></h4>
+                    <?php } ?>
+=======
                     <h4><?= $prices['name']?></h4>
+>>>>>>> e8b951f3d8bd9cdab76ce3d34b0840adc8b99b55
                 </div>
             </div>
-            </div>
-        <?php } ?>
-        
-        <h3><?php echo  $salut ?></h3>
-        
+        </div>
     </section>
 </main>
