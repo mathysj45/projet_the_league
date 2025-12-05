@@ -5,25 +5,26 @@
 
 class PageController extends AbstractController 
 {
-    // --- ACCUEIL ---
+    --- ACCUEIL ---
     public function home() : void
     {
         $teamManager = new TeamManager();
         $playerManager = new PlayerManager();
-        $matchManager = new MatchManager();
+        $gameManager = new GameManager();
 
         $teams = $teamManager->getAllTeam();
         $players = $playerManager->getAllPlayers();
-        $matches = $matchManager->getAllMatches();
+        $games = $gameManager->getAllGames();
 
         $this->render("home", [
             "pageTitle" => "The League",
             "teams" => $teams,
             "players" => $players,
-            "matches" => $matches
+            "matches" => $games
         ]);
 
     }
+
     // --- GESTION DES ÉQUIPES ---
     public function team() : void
     {
@@ -64,26 +65,26 @@ class PageController extends AbstractController
     // --- GESTION DES MATCHS ---
     public function match() : void
 {
-    $matchManager = new MatchManager();
+    $gameManager = new GameManager();
     $perfManager = new Player_PerformanceManager();
 
     if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
         
-        $match = $matchManager->getMatchById($id);
+        $game = $gameManager->getGameById($id); 
         $stats = $perfManager->getStatsByMatchId($id); 
 
         $this->render("match", [
-            "match" => $match,
+            "match" => $game,
             "stats" => $stats,
             "pageTitle" => "Détails du match"
         ]);
     }
         else 
         {
-            $matches = $matchManager->getAllMatches();
+            $games = $gameManager->getAllGames();
             $this->render("match", [
-                "matches" => $matches,
+                "matches" => $games,
                 "pageTitle" => "Les matchs"
             ]);
         }
