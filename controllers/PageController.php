@@ -5,9 +5,10 @@
 
 class PageController extends AbstractController 
 {
-    // --- ACCUEIL ---
+    --- ACCUEIL ---
     public function home() : void
     {
+<<<<<<< HEAD
     //     $teamManager = new TeamManager();
     //     $playerManager = new PlayerManager();
     //     $matchManager = new MatchManager();
@@ -25,8 +26,25 @@ class PageController extends AbstractController
 
         $this->render("home", ["pageTitle" => "The league"]);
 
+=======
+        $teamManager = new TeamManager();
+        $playerManager = new PlayerManager();
+        $gameManager = new GameManager();
+
+        $teams = $teamManager->getAllTeam();
+        $players = $playerManager->getAllPlayers();
+        $games = $gameManager->getAllGames();
+
+        $this->render("home", [
+            "pageTitle" => "The League",
+            "teams" => $teams,
+            "players" => $players,
+            "matches" => $games
+        ]);
+>>>>>>> df63f18776626a88a7dd781b814d9e31db2e080b
 
     }
+
     // --- GESTION DES ÉQUIPES ---
     public function team() : void
     {
@@ -67,26 +85,26 @@ class PageController extends AbstractController
     // --- GESTION DES MATCHS ---
     public function match() : void
 {
-    $matchManager = new MatchManager();
+    $gameManager = new GameManager();
     $perfManager = new Player_PerformanceManager();
 
     if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
         
-        $match = $matchManager->getMatchById($id);
+        $game = $gameManager->getGameById($id); 
         $stats = $perfManager->getStatsByMatchId($id); 
 
         $this->render("match", [
-            "match" => $match,
+            "match" => $game,
             "stats" => $stats,
             "pageTitle" => "Détails du match"
         ]);
     }
         else 
         {
-            $matches = $matchManager->getAllMatches();
+            $games = $gameManager->getAllGames();
             $this->render("match", [
-                "matches" => $matches,
+                "matches" => $games,
                 "pageTitle" => "Les matchs"
             ]);
         }
