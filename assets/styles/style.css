@@ -1,0 +1,28 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b132b;
+    font-family: 'roboto', sans-serif;
+}
+
+.banniere {
+    text-align: center;
+    
+    background-image: url('../image/home_background_league.png');
+    background-size: 100vw;
+    
+    height: 20vw;
+}
+.banniere h2 {
+    color: white;
+    padding-top: 30px;
+    font-size: 48px; 
+    font-weight: 800;
+    
+}
+.banniere h3 {
+    padding-top: 30px;
+    color: white;
+    font-size: 34px; 
+}
