@@ -5,6 +5,7 @@ require "config/autoload.php";
 $router = new Router();
 $router->handleRequest($_GET);
 $TeamManager = new TeamManager();
-$data["teams"] = $TeamManager->getTeamById(1);
+
+
 
 ?>
