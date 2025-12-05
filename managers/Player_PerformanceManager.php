@@ -22,6 +22,7 @@ class Player_PerformanceManager extends AbstractManager
     {
         $query = $this->db->prepare("SELECT  player, game, points, assists FROM player_performance");
         $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        
         return $results;
     }
 }

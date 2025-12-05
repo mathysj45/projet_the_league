@@ -26,7 +26,7 @@ class GameManager extends AbstractManager
         return $games;
     }
 
-    public function getTeamById(int $id) : Game
+    public function getGameById(int $id) : Game
     {
         $query = $this->db->prepare("SELECT * FROM games WHERE id = :id");
         $parameters = [
