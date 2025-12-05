@@ -50,21 +50,22 @@ class PageController extends AbstractController
 
     // --- GESTION DES MATCHS ---
     public function match() : void
-    {
-        $matchManager = new MatchManager();
+{
+    $matchManager = new MatchManager();
+    $perfManager = new Player_PerformanceManager();
 
-        if (isset($_GET['id'])) 
-        {
-            $id = (int)$_GET['id'];
-            $match = $matchManager->getMatchById($id);
-            $matchStats = $matchManager->getStatsByMatchId($id);
+    if (isset($_GET['id'])) {
+        $id = (int)$_GET['id'];
+        
+        $match = $matchManager->getMatchById($id);
+        $stats = $perfManager->getStatsByMatchId($id); 
 
-            $this->render("match", [
-                "match" => $match,
-                "stats" => $matchStats,
-                "pageTitle" => "Détails du match"
-            ]);
-        } 
+        $this->render("match", [
+            "match" => $match,
+            "stats" => $stats,
+            "pageTitle" => "Détails du match"
+        ]);
+    }
         else 
         {
             $matches = $matchManager->getAllMatches();
