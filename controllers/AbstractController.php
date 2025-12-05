@@ -7,6 +7,8 @@ abstract class AbstractController
         extract($data);
 
         require "templates/layout.phtml";
+    
+
     }
 
     protected function redirect(string $route) : void

@@ -8,46 +8,86 @@ class TeamManager extends AbstractManager
     
     }
 
-    public function getAllTeam() : array
+    public function getAllTeam(): array
     {
-        $query = $this->db->prepare("SELECT teams.id , teams.name, teams.description ,media.url AS logo FROM teams
-                                            JOIN media on teams.logo = media.id ");
-        $parameters = [
-
-        ];
-        $query->execute($parameters);
+        $query = $this->db->prepare("SELECT teams.id AS team_id, teams.name, teams.description, media.url AS logo
+            FROM teams
+            JOIN media ON teams.logo = media.id
+        ");
+        $query->execute();
         $results = $query->fetchAll(PDO::FETCH_ASSOC);
+
         $teams = [];
 
-        foreach($results as $result)
-        {
-            $team = new Team($result["id"],$result["name"],$result["description"],$result["logo"]);
-            $teams[] = $team;
+        foreach ($results as $result) {
+            
+            // Récupérer les joueurs de l’équipe
+            $qPlayers = $this->db->prepare("SELECT players.id, players.nickname, players.bio, media.url AS portrait , players.team
+            FROM players
+            JOIN media ON players.portrait = media.id
+            WHERE players.team = :id");
+            $qPlayers->execute(["id" => $result["team_id"]]);
+
+            $playersData = $qPlayers->fetchAll(PDO::FETCH_ASSOC);
+            $players = [];
+
+            foreach ($playersData as $p) {
+                $players[] = new Player($p["id"], $p["nickname"], $p["bio"], $p["portrait"], $p["team"]);
+            }
+            
+            // Créer l’objet Team
+            $teams[] = new Team(
+                $result["team_id"],
+                $result["name"],
+                $result["description"],
+                $result["logo"],
+                $players
+            );
         }
+
         return $teams;
     }
 
-    public function getTeamById(int $id) : Team
+
+    public function getTeamById(int $id): ?Team
     {
-        $query = $this->db->prepare('SELECT teams.id , teams.name, teams.description ,media.url as logo FROM teams
-                                            JOIN media on teams.logo = media.id 
-                                            WHERE id = :id' );
-        $parameters = [
-            'id' => $id
-        ];
-        $query->execute($parameters);
+        // Récupérer la team
+        $query = $this->db->prepare("
+            SELECT teams.id AS team_id, teams.name, teams.description, media.url AS logo
+            FROM teams
+            JOIN media ON teams.logo = media.id
+            WHERE teams.id = :id
+        ");
+        $query->execute(["id" => $id]);
+
         $result = $query->fetch(PDO::FETCH_ASSOC);
-        if ($result){
-            
-            
-            $team = new Team($result["id"],$result["name"],$result["description"],$result["logo"]);
-            
-            return $team;
-        }else
-        {
+
+        if (!$result) {
             return null;
         }
+
+        // Récupérer les joueurs de la team
+        $qPlayers = $this->db->prepare("SELECT players.id , players.nickname, players.bio, media.url AS portrait , players.team
+            FROM players
+            JOIN media ON players.portrait = media.id
+            WHERE players.team = :id");
+        $qPlayers->execute(["id" => $result["team_id"]]);
+        $playersData = $qPlayers->fetchAll(PDO::FETCH_ASSOC);
+
+        $players = [];
+        foreach ($playersData as $p) {
+            $players[] = new Player($p["id"], $p["nickname"], $p["bio"], $p["portrait"], $p["team"]);
+        }
+
+        return new Team(
+            $result["team_id"],
+            $result["name"],
+            $result["description"],
+            $result["logo"],
+            $players
+        );
     }
+
 
 }
 
