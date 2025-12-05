@@ -23,7 +23,7 @@ class Player {
     public function getBio(): string {
         return $this->bio;
     }
-    public function getPortrait(): int {
+    public function getPortrait() {
         return $this->portrait;
     }
     public function getTeam(): Team {
