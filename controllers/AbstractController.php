@@ -4,7 +4,8 @@ abstract class AbstractController
 {
     protected function render(string $template, array $data) : void
     {
-        extract($data);
+        // var_dump($data);
+        // die;
         require "templates/layout.phtml";
     }
 
