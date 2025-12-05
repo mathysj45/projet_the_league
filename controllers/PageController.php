@@ -5,7 +5,7 @@
 
 class PageController extends AbstractController 
 {
-    // --- GESTION DES ÉQUIPES (Liste) ---
+    // --- GESTION DES ÉQUIPES ---
     public function team() : void
     {
         $teamManager = new TeamManager();
@@ -28,16 +28,24 @@ class PageController extends AbstractController
     {
         $playerManager = new PlayerManager();
 
-        isset($_GET['id']) 
+        if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
             $player = $playerManager->getPlayerById($id);
 
             $this->render("player", [
                 "player" => $player,
-                "pageTitle" => "Les players"
+                "pageTitle" => "Profil du joueur"
             ]);
         } 
+        else 
+        {
+            $players = $playerManager->getAllPlayers();
+            $this->render("player", [
+                "players" => $players,
+                "pageTitle" => "Les players"
+            ]);
+        }
     }
 
     // --- GESTION DES MATCHS ---
@@ -45,7 +53,7 @@ class PageController extends AbstractController
     {
         $matchManager = new MatchManager();
 
-        isset($_GET['id']) 
+        if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
             $match = $matchManager->getMatchById($id);
@@ -57,6 +65,14 @@ class PageController extends AbstractController
                 "pageTitle" => "Détails du match"
             ]);
         } 
+        else 
+        {
+            $matches = $matchManager->getAllMatches();
+            $this->render("match", [
+                "matches" => $matches,
+                "pageTitle" => "Les matchs"
+            ]);
+        }
     }
 
     // --- ERREUR 404 ---
