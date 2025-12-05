@@ -8,4 +8,4 @@ require "controllers/AbstractController.php";
 require "controllers/DefaultController.php";
 
 require "services/Router.php";
-require "database";
+require "config/database.php";
