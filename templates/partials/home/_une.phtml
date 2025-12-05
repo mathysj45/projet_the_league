@@ -1,22 +1,31 @@
 <main>
-    <section class="une_team">
+    <section class="team_une">
         <h2>TEAM À LA UNE</h2>
         <div class="row_une"> 
-            <img class="img_une" src='./assets/images/' alt="logo chouette">
+            <p><?= $teams[0]->getLogo(); ?></p>
+            <img class="img_une" src="<?= $teams[0]->getLogo(); ?>" alt="">
+
             <div class="column_une">
-                <h3><?= $data['name_team'] ?></h3>
+                <h3><?= $teams[0]->getName(); ?></h3>
                 <p>Les players</p>
-                <?php foreach($data['owl_team'] as $owl_team)
-                    { ?>
-                <div class="tuiles">
-                    <img class="img_perso_une" src='./assets/images/' alt="membrechouette">
-<<<<<<< HEAD
-                    <h4><?= $owl_team['name']?></h4>
-                    <?php } ?>
-=======
-                    <h4><?= $prices['name']?></h4>
->>>>>>> e8b951f3d8bd9cdab76ce3d34b0840adc8b99b55
-                </div>
+                <?php foreach ($teams[0]->getPlayers() as $player){ ?>
+                    
+                    <p><?= $player->getNickname() ?></p>
+                    <img src="<?= $player->getPortrait() ?>" alt="" >
+                <?php } ?>
+
+    </section>
+
+    <section class="player_une">
+        <h2>LES PLAYERS À LA UNE</h2>
+        <div class="row_une"> 
+            <?php foreach($data['players'] as $player_une)
+                { ?>
+            <div class="player_tuiles">
+                <img class="img_perso_une" src='./assets/images/' alt="players_une">
+                <h3><?=$players[]->getNickname()?></h3>
+                <h4><?= $player_une['team']?></h4>
+                <?php } ?>
             </div>
         </div>
     </section>

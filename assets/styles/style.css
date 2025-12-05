@@ -1,11 +1,18 @@
 
-body {
+body
+{
     margin: 0;
     padding: 0;
-    /* background-color: #0b132b; */
+    background-color: #0b132b;
     font-family: 'roboto', sans-serif;
 }
 
+a
+{
+    text-decoration-color: none;
+    text-decoration: none;
+}
+    
 .banniere {
     text-align: center;
     
