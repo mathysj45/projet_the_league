@@ -1,0 +1,13 @@
+<main>
+    <section class="prix">
+        <h2>NOS TARIFS</h2>
+        <?php foreach($data['prices'] as $prices)
+            { ?>
+        <div class="tuiles">
+            <h3><?= $prices['name']?></h3><br>
+            <h2><?= $prices['price']?></h4><br>
+            <p><?= $prices['duration']?></p>
+        </div>
+        <?php } ?>
+    </section>
+</main>

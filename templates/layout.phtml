@@ -1,50 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<title>Exercice Routeur MVC</title>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="index.php">Accueil</a>
-					</li>
-					<li>
-						<a href="index.php?route=a-propos">À propos</a>
-					</li>
-                    <li>
-						<a href="index.php?route=contact">Contact</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<?php
-			if($route === "home")
-            {
-                require "templates/home.phtml";
-            }
-
-            else if($route === "team")
-            {
-                require "templates/team.phtml";
-            }
-
-            else if($route === "player")
-            {
-                require "templates/player.phtml";
-            }
-
-            else if($route === "match")
-            {
-                require "templates/match.phtml";
-            }
-
-            else
-            {
-                require "templates/notFound.phtml";
-            }
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<<<<<<< HEAD
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+=======
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+>>>>>>> 8e676d5062b3d534a37f35ed6890f18a51425678
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <?php
+<<<<<<< HEAD
+            require "templates/_header.phtml";
+            require "templates/$template.phtml";
+            require "templates/_footer.phtml";
 		?>
 	</body>
+=======
+            require "templates/$template.phtml";
+        ?>
+    </body>
+>>>>>>> 8e676d5062b3d534a37f35ed6890f18a51425678
 </html>
