@@ -80,31 +80,31 @@ class PageController extends AbstractController
 
     // --- GESTION DES MATCHS ---
     public function match() : void
-{
-    $gameManager = new GameManager();
-    $perfManager = new Player_PerformanceManager();
+    {
+        $gameManager = new GameManager();
+        $perfManager = new Player_PerformanceManager();
 
-    if (isset($_GET['id'])) {
-        $id = (int)$_GET['id'];
-        
-        $game = $gameManager->getGameById($id); 
-        $stats = $perfManager->getStatsByMatchId($id); 
+        if (isset($_GET['id'])) {
+            $id = (int)$_GET['id'];
+            
+            $game = $gameManager->getGameById($id); 
+            $stats = $perfManager->getStatsByMatchId($id); 
 
-        $this->render("match", [
-            "match" => $game,
-            "stats" => $stats,
-            "pageTitle" => "Détails du match"
-        ]);
-    }
-        else 
-        {
-            $games = $gameManager->getAllGames();
             $this->render("match", [
-                "matches" => $games,
-                "pageTitle" => "Les matchs"
+                "match" => $game,
+                "stats" => $stats,
+                "pageTitle" => "Détails du match"
             ]);
         }
-    }
+            else 
+            {
+                $games = $gameManager->getAllGames();
+                $this->render("match", [
+                    "matches" => $games,
+                    "pageTitle" => "Les matchs"
+                ]);
+            }
+        }
 
     // --- ERREUR 404 ---
     public function notFound() : void
