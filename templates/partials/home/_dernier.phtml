@@ -1,7 +1,7 @@
 <main>
     <section class="dernier">
         <h2>LE DERNIER MATCH</h2>
-        <div class="v_vs_o">
+        <div class="matche_du_jour">
             
             
             <?php 
@@ -19,10 +19,10 @@
             <h3><?=$matche_ressent->getName() ?></h3>
 
             <p>17/01/2024</p>
-            <div class="img_v_vs_o">
+            <div class="img_matche_du_jour">
                 
-                <img src="<?=$teams[$matche_ressent->getTeam1()]->getLogo() ?>" alt="logo y">
-                <img src="" alt="logo owl">
+                <img src="<?=$teams[$matche_ressent->getTeam1()]->getLogo() ?>" alt="">
+                <img src="<?=$teams[$matche_ressent->getTeam2()]->getLogo() ?>" alt="">
             </div>
         </div>
     </section>

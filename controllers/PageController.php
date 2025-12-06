@@ -6,25 +6,34 @@
 class PageController extends AbstractController 
 {
     // --- ACCUEIL ---
-    public function home() : void
-    {
-        $teamManager = new TeamManager();
-        $playerManager = new PlayerManager();
-        $gameManager = new GameManager();
+    // --- ACCUEIL ---
+public function home() : void
+{
+    $teamManager = new TeamManager();
+    $playerManager = new PlayerManager();
+    $gameManager = new GameManager();
 
-        $teams = $teamManager->getAllTeam();
-        
-        $players = $playerManager->getAllPlayers();
-        $games = $gameManager->getAllGames();
-        
-        $this->render("home", [
-            "pageTitle" => "The League",
-            "teams" => $teams,
-            "players" => $players,
-            "matches" => $games
-        ]);
-
+    // 1. Récupération des données brutes
+    // (teams est supposé indexé par ID suite à la modification de TeamManager::getAllTeam())
+    $teams = $teamManager->getAllTeam(); 
+    $players = $playerManager->getAllPlayers();
+    $games = $gameManager->getAllGames();
+    
+    // 2. Créer un tableau indexé pour les joueurs (utile pour les players à la une)
+    $playersById = [];
+    foreach ($players as $player) {
+        $playersById[$player->getId()] = $player;
     }
+    
+    $this->render("home", [
+        "pageTitle" => "The League",
+        "teams" => $teams, // Indexé par ID
+        "players" => $players, // Liste brute (pour boucler sur tous)
+        "playersById" => $playersById, // Indexé par ID (pour l'accès direct par ID)
+        "matches" => $games
+    ]);
+
+}
 
     // --- GESTION DES ÉQUIPES ---
     public function team() : void

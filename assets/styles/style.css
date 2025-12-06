@@ -212,7 +212,7 @@ nav a:hover
     font-weight: 400;
 }
 
-.v_vs_o
+.matche_du_jour
 {
     display: flex;
     flex-direction: column;
@@ -225,17 +225,27 @@ nav a:hover
     padding: 20px;
 }
 
-.v_vs_o p
+.matche_du_jour p
 {
     color: #83a1bb;
     font-size: 11px;
 }
-
-.img_v_vs_o
+.matche_du_jour h3
+{
+    text-transform: uppercase;
+}
+.img_matche_du_jour
 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    gap: 0.8vw;
     padding: 10px;
+}
+.img_matche_du_jour img
+{
+    width: 26vw;
+    height: auto;
+    padding: 0.8vw;
+    border: 1px solid #1c2541;
 }
