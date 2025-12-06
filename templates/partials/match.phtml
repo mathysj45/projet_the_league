@@ -1,12 +1,14 @@
-<section class="players">
-<h2>LES PLAYERS DE LA LEAGUE</h2>
-    <?php foreach($data['player'] as $player)
+<section class="matchs">
+<h2>LES MATCHS</h2>
+    <?php foreach($data['games'] as $game)
         { ?>
-    <div class="player">
-        <img src='./assets/images/' alt="all players">
-        <h3><?= $player['name'] ?></h3>
-        <h4><?= $player['team'] ?></h4>
-        <button type="submit">Découvrez <?= $player['name'] ?></button>
+    <div class="match">
+        <div class="match_img">
+            <img src='./assets/images/' alt="all players">
+            <img src='./assets/images/' alt="all players">
+        </div>
+        <h3><?= $game['name'] ?></h3>
+        <button type="submit">Détails du match<?= $player['name'] ?></button>
         <?php } ?>
     </div>
 </section>
