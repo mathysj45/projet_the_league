@@ -1,3 +1,33 @@
-<?php
-require "templates/partials/player/_state.phtml";
-
+<section class="players">
+    <?php 
+    $teamsById = [];
+    if(isset($data['teams'])) {
+        foreach ($data['teams'] as $t) {
+            $teamsById[$t->getId()] = $t;
+        }
+    }
+    ?>
+    <div class="contenue_player">
+        <h2>LES PLAYERS DE LA LEAGUE</h2>
+        <div class="vrap_teams"> <?php foreach($data['players'] as $player): ?>
+            <div class="column_player">
+                <img src='<?= $player->getPortrait() ?>' alt="all players">
+                <h3><?= $player->getNickname() ?></h3>
+                <h4><?php 
+                $teamId = $player->getTeam();
+                if (isset($teamsById[$teamId])) {
+                    echo $teamsById[$teamId]->getName(); 
+                } else {
+                    echo "Team #".$teamId;
+                }
+                ?></h4>
+                <a href="index.php?route=player&id=<?= $player->getId() ?>">
+                    <button type="button">Découvrez <?= $player->getNickname() ?></button>
+                </a>
+                </div>
+            <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+            <?php
+            require "templates/partials/player/_state.phtml";
