@@ -94,32 +94,40 @@ class PageController extends AbstractController
 
     // --- GESTION DES MATCHS ---
     public function match() : void
-{
-    $gameManager = new GameManager();
-    $perfManager = new Player_PerformanceManager();
-
-    if (isset($_GET['id'])) {
-        $id = (int)$_GET['id'];
+    {
+        $gameManager = new GameManager();
+        $perfManager = new Player_PerformanceManager();
+        $teamManager = new TeamManager();
         
-        $game = $gameManager->getGameById($id); 
-        $stats = $perfManager->getStatsByMatchId($id); 
+        // Récupérer toutes les équipes une seule fois.
+        // Il est plus simple de le faire ici, car elles sont nécessaires dans les deux cas (liste et détail).
+        $teams = $teamManager->getAllTeam(); 
 
-        $this->render("match", [
-            "match" => $game,
-            "stats" => $stats,
-            "pageTitle" => "Détails du match"
-        ]);
-    }
+        if (isset($_GET['id'])) {
+            // Logique pour l'affichage d'un seul match (détails)
+            $id = (int)$_GET['id'];
+            
+            $game = $gameManager->getGameById($id); 
+            $stats = $perfManager->getStatsByMatchId($id); 
+
+            $this->render("match", [
+                "match" => $game,
+                "stats" => $stats,
+                "pageTitle" => "Détails du match",
+                "teams" => $teams, // Passé ici
+            ]);
+        }
         else 
         {
+            // Logique pour l'affichage de TOUS les matchs (liste)
             $games = $gameManager->getAllGames();
             $this->render("match", [
                 "matches" => $games,
+                "teams" => $teams, // C'est ici qu'il fallait le passer !
                 "pageTitle" => "Les matchs"
             ]);
         }
     }
-
     // --- ERREUR 404 ---
     public function notFound() : void
     {

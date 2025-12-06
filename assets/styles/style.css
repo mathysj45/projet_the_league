@@ -256,7 +256,8 @@ nav a:hover
 
 /* ================TEAMS================= */
 
-.contenue_teams h2
+.contenue_teams h2,
+.contenue_player h2
 {
     color: #d4b52f;
     font-weight: 700;
@@ -265,7 +266,8 @@ nav a:hover
     padding: 25px;
 }
 
-.contenue_teams img
+.contenue_teams img,
+.contenue_player img
 {
     width: 17vw;
     height: 17vw;
@@ -281,7 +283,8 @@ nav a:hover
     row-gap: 50px;
 }
 
-.column_teams
+.column_teams,
+.column_player
 {
     display: flex;
     flex-direction: column;
@@ -290,20 +293,24 @@ nav a:hover
     gap:5px;
 }
 
-.column_teams h3
+.column_teams h3,
+.column_player h3
 {
     color: #d4b52f;
     font-weight: 700;
     font-size: 35px;
 }
 
-.column_teams h4
+.column_teams h4,
+.column_player h4
 {
     font-size: 11px;
     padding-bottom: 10px;
 }
 
-.column_teams button
+.column_teams button,
+.column_player button,
+.match button
 {
     border: 1px solid #d4b52f;
     border-radius: 5px;
@@ -312,13 +319,16 @@ nav a:hover
     color: #d4b52f;
 }
 
-.column_teams button:hover
+.column_teams button:hover,
+.column_player button:hover,
+.match button:hover
 {
     color: #d97ab5;
     border-color: #d97ab5;
     scale: 1.1;
 }
 
+<<<<<<< HEAD
 /* =======PAGE DÉTAIL TEAM======= */
 
 .team-detail-title {
@@ -362,3 +372,103 @@ nav a:hover
     background-color: #ffc107;
     color: #000;
 }
+=======
+/* ============PLAYERS================ */
+
+.contenue_player h2
+{
+    color: #d97ab5;
+}
+
+.column_player
+{
+    flex: 0 0 calc(33.333% - 120px);
+}
+
+.column_player h3
+{
+    color: #d97ab5;
+}
+
+.column_player h4
+{
+    color:#d4b52f;
+}
+
+.column_player button
+{
+    border-color: #d97ab5;
+    color: #d97ab5;
+}
+
+.column_player button:hover
+{
+    color: #45a0ec;
+    border-color: #45a0ec;
+}
+
+/* =============MATCHS================= */
+
+.match_contenue h2
+{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 2.2vw;
+    color: #45a0ec;
+}
+
+.match
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto;
+    width: fit-content;
+    gap: 40px;
+    border: 1px solid #1c2541;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.match p
+{
+    color: #83a1bb;
+    font-size: 11px;
+}
+.match h3
+{
+    text-transform: uppercase;
+    font-size: 1.8vw;
+    color: #45a0ec;
+}
+.match_img
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8vw;
+    padding: 10px;
+}
+.match_img img
+{
+    width: 26vw;
+    height: auto;
+    padding: 0.8vw;
+    border: 1px solid #1c2541;
+}
+
+.match button
+{
+    padding: 6px 185px ;
+    border-color: #45a0ec;
+    color: #45a0ec;
+}
+
+.match button:hover
+{
+    color: #d4b52f;
+    border-color: #d4b52f;
+}
+
+>>>>>>> ce54b56d18416007a9f8da90603045f6dca5d607
