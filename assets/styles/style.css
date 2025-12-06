@@ -370,3 +370,13 @@ nav a:hover
     padding: 0.8vw;
     border: 1px solid #1c2541;
 }
+.match a {
+    margin-top: -20px   ;
+    color: #45a0ec;
+    text-transform: uppercase;
+    border: 1px solid #45a0ec;
+    padding: 6px 120px ;
+    border-radius: 5px;
+    font-size: 0.8vw;
+    
+}
