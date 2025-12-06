@@ -8,22 +8,25 @@ class Player_PerformanceManager extends AbstractManager
     
     }
 
-    public function getPlayerPerformanceById(int $id) 
+
+    public function getStatsByPlayerId(int $id): array
     {
-        $query = $this->db->prepare("SELECT  player, game, points, assists FROM player_performance WHERE id = :id");
+        $query = $this->db->prepare("SELECT player, game, points, assists FROM player_performance WHERE player = :id");
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
-        $stat = $query->fetch(PDO::FETCH_ASSOC);
-        return $stat;
+        
+        $stats = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $stats;
     }
+
     public function getPerformance(int $id)
     {
-        $query = $this->db->prepare("SELECT  player, game, points, assists FROM player_performance");
+        $query = $this->db->prepare("SELECT player, game, points, assists FROM player_performance");
         $results = $query->fetchAll(PDO::FETCH_ASSOC);
         
         return $results;
     }
 }
-

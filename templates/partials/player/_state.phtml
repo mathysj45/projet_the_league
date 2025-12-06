@@ -1,0 +1,15 @@
+
+<?php if (isset($stats[0])): ?>
+
+    <div class="stats_box">
+        <h3>Statistiques globales</h3>
+        
+        <p>Points Totaux: <strong><?= $stats->getTotalPoints() ?></strong></p>
+        <p>Matchs Joués: <strong><?= $stats->getGamesPlayed() ?></strong></p>
+        
+        <p>Taux de victoire: <strong><?= $stats['win_rate'] ?></strong></p>
+    </div>
+    
+<?php else: ?>
+    <p>Aucune statistique disponible pour ce joueur.</p>
+<?php endif; ?>
