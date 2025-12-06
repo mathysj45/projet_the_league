@@ -1,12 +1,28 @@
 <main>
     <section class="dernier">
         <h2>LE DERNIER MATCH</h2>
-        <div class="v_vs_o">
-            <h3>VENDETTA VS OWLS</h3>
+        <div class="matche_du_jour">
+            
+            
+            <?php 
+            $date_plus_ressent = $matches[0]->getDate(); 
+            $matche_ressent = $matches[0];
+
+            foreach ($matches as $matche){ 
+
+                $dateActuelle = $matche->getDate(); 
+                if ($dateActuelle > $date_plus_ressent) {
+                    $date_plus_ressent = $dateActuelle;
+                    $matche_ressent = $matche;
+                }
+            } ?>
+            <h3><?=$matche_ressent->getName() ?></h3>
+
             <p>17/01/2024</p>
-            <div class="img_v_vs_o">
-                <img src="" alt="logo y">
-                <img src="" alt="logo owl">
+            <div class="img_matche_du_jour">
+                
+                <img src="<?=$teams[$matche_ressent->getTeam1()]->getLogo() ?>" alt="">
+                <img src="<?=$teams[$matche_ressent->getTeam2()]->getLogo() ?>" alt="">
             </div>
         </div>
     </section>

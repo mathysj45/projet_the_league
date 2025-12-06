@@ -74,12 +74,7 @@ nav a:hover
     font-weight: 500;
     padding-bottom: 60px;
 }
-.row_une img,
-.row2_une img
-{
-    width: 10vw;
-    height: 10vw;
-}
+
 
 .team_une h2,
 .player_une h2,
@@ -98,6 +93,7 @@ nav a:hover
 {
     color: #d97ab5;
     border-color: #d97ab5;
+    margin-bottom: 24px;
 }
 
 .dernier h2
@@ -112,16 +108,45 @@ nav a:hover
     flex-direction: row;
     gap: 15%;
     border: 1px solid #1c2541;
-    border-radius: 10px;
+    
     align-items: center;
+    padding: 3px;
     padding-left: 25px;
-    margin: 10px;
+    
+    margin: 20px;
+}
+.row_une img
+{
+    width: 15.2vw;
+    height: auto;
+}
+.for_une p
+{
+   color: #d97ab5;
+   
+   font-weight: 800;
+
+}
+
+.for_une
+{
+    display: flex;
+    flex-direction: row;
+    gap: 30%;
+}
+
+.team_tuiles
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
 }
 
 .column_une img
 {
-    width: 8vw;
-    height: 8vw;
+    width: 10.5vw;
+    height: 10.5vw;
 }
 
 .column_une
@@ -142,24 +167,11 @@ nav a:hover
    font-size: 13px;
 }
 
-.for_une p
-{
-   color: #d97ab5;
-}
 
-.for_une
+.team_tuiles p ,
+.player_tuiles h3
 {
-    display: flex;
-    flex-direction: row;
-    gap: 50%;
-}
-
-.team_tuiles
-{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
+    text-transform: uppercase;
 }
 
 .row2_une
@@ -168,7 +180,7 @@ nav a:hover
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 5%;
+    gap: 2vw;
     padding-left: 25px;
     margin: 10px;
 }
@@ -180,23 +192,31 @@ nav a:hover
     align-items: center;
     gap: 5px;
     border: 1px solid #1c2541;
-    border-radius: 10px;
-    padding: 20px;
+    
+    width: 21vw;
+    height: 25vw;
+    
 }
-
+.player_tuiles img
+{
+    margin-top: 8%;
+    width: 84%;
+    height: auto;
+    
+}
 .player_tuiles h3
 {
     color: #d97ab5;
     font-weight: 400;
 }
 
-.player_tuiles h4
+.player_tuiles h4 
 {
     color: #d4b52f;
     font-weight: 400;
 }
 
-.v_vs_o
+.matche_du_jour
 {
     display: flex;
     flex-direction: column;
@@ -209,19 +229,29 @@ nav a:hover
     padding: 20px;
 }
 
-.v_vs_o p
+.matche_du_jour p
 {
     color: #83a1bb;
     font-size: 11px;
 }
-
-.img_v_vs_o
+.matche_du_jour h3
+{
+    text-transform: uppercase;
+}
+.img_matche_du_jour
 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    gap: 0.8vw;
     padding: 10px;
+}
+.img_matche_du_jour img
+{
+    width: 26vw;
+    height: auto;
+    padding: 0.8vw;
+    border: 1px solid #1c2541;
 }
 
 /* ================TEAMS================= */
