@@ -13,9 +13,10 @@ class PageController extends AbstractController
         $gameManager = new GameManager();
 
         $teams = $teamManager->getAllTeam();
+        
         $players = $playerManager->getAllPlayers();
         $games = $gameManager->getAllGames();
-
+        
         $this->render("home", [
             "pageTitle" => "The League",
             "teams" => $teams,
