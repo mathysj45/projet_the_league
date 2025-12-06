@@ -1,12 +1,3 @@
-<section class="players">
-<h2>LES PLAYERS DE LA LEAGUE</h2>
-    <?php foreach($data['player'] as $player)
-        { ?>
-    <div class="player">
-        <img src='./assets/images/' alt="all players">
-        <h3><?= $player['name'] ?></h3>
-        <h4><?= $player['team'] ?></h4>
-        <button type="submit">Découvrez <?= $player['name'] ?></button>
-        <?php } ?>
-    </div>
-</section>
+<?php
+require "templates/partials/player/_state.phtml";
+

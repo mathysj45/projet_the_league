@@ -3,30 +3,31 @@
 class PageController extends AbstractController 
 {
     // --- ACCUEIL ---
-public function home() : void
-{
-    $teamManager = new TeamManager();
-    $playerManager = new PlayerManager();
-    $gameManager = new GameManager();
 
-    $teams = $teamManager->getAllTeam(); 
-    $players = $playerManager->getAllPlayers();
-    $games = $gameManager->getAllGames();
-    
-    $playersById = [];
-    foreach ($players as $player) {
-        $playersById[$player->getId()] = $player;
+    public function home() : void
+    {
+        $teamManager = new TeamManager();
+        $playerManager = new PlayerManager();
+        $gameManager = new GameManager();
+
+        $teams = $teamManager->getAllTeam(); 
+        $players = $playerManager->getAllPlayers();
+        $games = $gameManager->getAllGames();
+        
+        $playersById = [];
+        foreach ($players as $player) {
+            $playersById[$player->getId()] = $player;
+        }
+        
+        $this->render("home", [
+            "pageTitle" => "The League",
+            "teams" => $teams,
+            "players" => $players,
+            "playersById" => $playersById,
+            "matches" => $games
+        ]);
+
     }
-    
-    $this->render("home", [
-        "pageTitle" => "The League",
-        "teams" => $teams, 
-        "players" => $players, 
-        "playersById" => $playersById,
-        "matches" => $games
-    ]);
-
-}
 
     // --- GESTION DES ÉQUIPES ---
     public function team() : void
@@ -55,18 +56,29 @@ public function home() : void
     }
 
     // --- GESTION DES JOUEURS ---
-    public function player() : void
+  public function player() : void
     {
         $playerManager = new PlayerManager();
+        $perfManager = new Player_PerformanceManager();
 
+
+        
         if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
             $player = $playerManager->getPlayerById($id);
 
+            if ($player) {
+                 $stats = $perfManager->getStatsByPlayerId($id); 
+            
+            } else {
+                 $stats = null;
+            }
+
             $this->render("player", [
                 "player" => $player,
-                "pageTitle" => "Profil du joueur"
+                "pageTitle" => "Profil du joueur",
+                "stats" => $stats 
             ]);
         } 
         else 
@@ -77,6 +89,7 @@ public function home() : void
                 "pageTitle" => "Les players"
             ]);
         }
+        
     }
 
     // --- GESTION DES MATCHS ---
