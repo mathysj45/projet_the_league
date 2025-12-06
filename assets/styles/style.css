@@ -309,7 +309,8 @@ nav a:hover
 }
 
 .column_teams button,
-.column_player button
+.column_player button,
+.match button
 {
     border: 1px solid #d4b52f;
     border-radius: 5px;
@@ -319,13 +320,13 @@ nav a:hover
 }
 
 .column_teams button:hover,
-.column_player button:hover
+.column_player button:hover,
+.match button:hover
 {
     color: #d97ab5;
     border-color: #d97ab5;
     scale: 1.1;
 }
-
 
 /* ============PLAYERS================ */
 
@@ -333,7 +334,6 @@ nav a:hover
 {
     color: #d97ab5;
 }
-
 
 .column_player
 {
@@ -353,25 +353,23 @@ nav a:hover
 .column_player button
 {
     border-color: #d97ab5;
-    color: #d97ab5;;
+    color: #d97ab5;
 }
 
 .column_player button:hover
 {
     color: #45a0ec;
     border-color: #45a0ec;
-    scale: 1.1;
 }
 
+/* =============MATCHS================= */
 
-
- 
-
-
-.matchs h2{
+.match_contenue h2
+{
+    display: block;
     text-align: center;
     padding: 20px;
-    font-size: 2.4vw;
+    font-size: 2.2vw;
     color: #45a0ec;
 }
 
@@ -414,3 +412,17 @@ nav a:hover
     padding: 0.8vw;
     border: 1px solid #1c2541;
 }
+
+.match button
+{
+    padding: 6px 185px ;
+    border-color: #45a0ec;
+    color: #45a0ec;
+}
+
+.match button:hover
+{
+    color: #d4b52f;
+    border-color: #d4b52f;
+}
+
