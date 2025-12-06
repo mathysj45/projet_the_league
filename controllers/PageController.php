@@ -41,7 +41,7 @@ class PageController extends AbstractController
 
             $this->render("team", [
                 "team" => $team,
-                "pageTitle" => "Profil du joueur"
+                "pageTitle" => "Détail de la team"
             ]);
         } 
         else
