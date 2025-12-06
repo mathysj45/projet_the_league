@@ -326,6 +326,7 @@ nav a:hover
     scale: 1.1;
 }
 
+<<<<<<< HEAD
 /* ============PLAYERS================ */
 
 .contenue_player h2
@@ -361,3 +362,56 @@ nav a:hover
     border-color: #45a0ec;
     scale: 1.1;
 }
+=======
+
+
+ 
+
+
+.matchs h2{
+    text-align: center;
+    padding: 20px;
+    font-size: 2.4vw;
+    color: #45a0ec;
+}
+
+.match
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto;
+    width: fit-content;
+    gap: 40px;
+    border: 1px solid #1c2541;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.match p
+{
+    color: #83a1bb;
+    font-size: 11px;
+}
+.match h3
+{
+    text-transform: uppercase;
+    font-size: 1.8vw;
+    color: #45a0ec;
+}
+.match_img
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8vw;
+    padding: 10px;
+}
+.match_img img
+{
+    width: 26vw;
+    height: auto;
+    padding: 0.8vw;
+    border: 1px solid #1c2541;
+}
+>>>>>>> 139f1eeee4f239ed7b2ab0e027b4e4b12a39c3fe
