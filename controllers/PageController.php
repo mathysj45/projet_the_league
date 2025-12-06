@@ -32,12 +32,26 @@ public function home() : void
     public function team() : void
     {
         $teamManager = new TeamManager();
+
+        if (isset($_GET['id'])) 
+        {
+            $id = (int)$_GET['id'];
+            $team = $teamManager->getTeamById($id);
+
+            $this->render("team", [
+                "team" => $team,
+                "pageTitle" => "Profil du joueur"
+            ]);
+        } 
+        else
+        {
         $teams = $teamManager->getAllTeam();
         
         $this->render("team", [
             "teams" => $teams,
             "pageTitle" => "Les teams"
         ]);
+        }
     }
 
     // --- GESTION DES JOUEURS ---
