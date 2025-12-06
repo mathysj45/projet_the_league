@@ -22,18 +22,22 @@
     <h2>LES PLAYERS À LA UNE</h2>
     <div class="row2_une"> 
         <?php 
-        $idsChoisis = [3, 12, 14]; 
+        $idsChoisis = [3, 14, 12]; 
+        $playersById = [];
+        foreach ($players as $player) {
+            $playersById[$player->getId()] = $player;
+        }
 
-        foreach($players as $player):
-            if (in_array($player->getId(), $idsChoisis)):{
+        foreach($idsChoisis as $playerId):
+            if (isset($playersById[$playerId])):
+                $player = $playersById[$playerId];
         ?>
             <div class="player_tuiles">
                 <img class="img_perso_une" src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>">
                 
                 <h3><?= $player->getNickname() ?></h3>
                 
-                <?php /* <h4>Team #<?= $player_une->getTeam() ?></h4> */ ?>
-                <?php } ?>
+                <h4><?= $teams[$player->getTeam()]->getName() ?></h4>
             </div>
         <?php 
             endif; 

@@ -26,7 +26,7 @@ class Player {
     public function getPortrait() {
         return $this->portrait;
     }
-    public function getTeam(): Team {
+    public function getTeam() {
         return $this->team;
     }
     
