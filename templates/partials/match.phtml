@@ -2,17 +2,19 @@
     <h2>LES MATCHS</h2>
     
     <?php 
-    // Utiliser $data['matches'] si c'est le cas, sinon utilisez $matches
+    
     foreach($data['matches'] as $game) 
     { ?>
         <div class="match">
+            <h3><?= $game->getName() ?></h3>
+            <p><?=$game->getDate() ?></p>
             <div class="match_img">
                 
                 <img src="<?=$teams[$game->getTeam1()]->getLogo() ?>" alt="">
                 <img src="<?=$teams[$game->getTeam2()]->getLogo() ?>" alt="">
             </div>
             
-            <h3><?= $game->getName() ?></h3>
+            
             
             <a href="?route=match&id=<?= $game->getId() ?>" class="button_detail">
                 Détails du match
