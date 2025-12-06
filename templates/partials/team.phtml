@@ -1,12 +1,16 @@
-<section class="team">
-<h2>LES TEAMS DE LA LEAGUE</h2>
-    <?php foreach($data['team'] as $team)
-        { ?>
-    <div class="player">
-        <img src='./assets/images/' alt="all teams">
-        <h3><?= $team['name'] ?></h3>
-        <h4><?= $team['description'] ?></h4>
-        <button type="submit">Découvrez <?= $team['name'] ?></button>
-        <?php } ?>
+<section class="teams">
+    <div class="contenue_teams">
+        <h2>LES TEAMS DE LA LEAGUE</h2>
+        <div class="vrap_teams">
+            <?php foreach($data['teams'] as $team)
+                { ?>
+            <div class="column_teams">
+                <img src="<?= $team->getLogo() ?>" alt="all teams">
+                <h3><?= $team->getName() ?></h3>
+                <h4><?= $team->getDescription() ?></h4>
+                <button type="submit">Découvrez <?= $team->getName()  ?></button>
+            </div>
+            <?php } ?>
+        </div>
     </div>
 </section>
