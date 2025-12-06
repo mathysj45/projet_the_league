@@ -1,25 +1,27 @@
 <section class="matchs">
-    <h2>LES MATCHS</h2>
-    
-    <?php 
-    
-    foreach($data['matches'] as $game) 
-    { ?>
-        <div class="match">
-            <h3><?= $game->getName() ?></h3>
-            <p><?=$game->getDate() ?></p>
-            <div class="match_img">
+    <div class="match_contenue">
+        <h2>LES MATCHS</h2>
+        
+        <?php 
+        
+        foreach($data['matches'] as $game) 
+        { ?>
+            <div class="match">
+                <h3><?= $game->getName() ?></h3>
+                <p><?=$game->getDate() ?></p>
+                <div class="match_img">
+                    
+                    <img src="<?=$teams[$game->getTeam1()]->getLogo() ?>" alt="">
+                    <img src="<?=$teams[$game->getTeam2()]->getLogo() ?>" alt="">
+                </div>
                 
-                <img src="<?=$teams[$game->getTeam1()]->getLogo() ?>" alt="">
-                <img src="<?=$teams[$game->getTeam2()]->getLogo() ?>" alt="">
+                
+                
+                <a href="?route=match&id=<?= $game->getId() ?>" class="button_detail">
+                    <button type="button">Détails du match</button>
+                </a>
+                
             </div>
-            
-            
-            
-            <a href="?route=match&id=<?= $game->getId() ?>" class="button_detail">
-                Détails du match
-            </a>
-            
-        </div>
-    <?php } ?>
+        <?php } ?>
+    </div>
 </section>
