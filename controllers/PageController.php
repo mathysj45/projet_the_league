@@ -1,11 +1,7 @@
 <?php
-// require_once "managers/TeamManager.php";
-// require_once "managers/PlayerManager.php";
-// require_once "managers/MatchManager.php";
 
 class PageController extends AbstractController 
 {
-    // --- ACCUEIL ---
     // --- ACCUEIL ---
 public function home() : void
 {
@@ -13,13 +9,10 @@ public function home() : void
     $playerManager = new PlayerManager();
     $gameManager = new GameManager();
 
-    // 1. Récupération des données brutes
-    // (teams est supposé indexé par ID suite à la modification de TeamManager::getAllTeam())
     $teams = $teamManager->getAllTeam(); 
     $players = $playerManager->getAllPlayers();
     $games = $gameManager->getAllGames();
     
-    // 2. Créer un tableau indexé pour les joueurs (utile pour les players à la une)
     $playersById = [];
     foreach ($players as $player) {
         $playersById[$player->getId()] = $player;
@@ -27,9 +20,9 @@ public function home() : void
     
     $this->render("home", [
         "pageTitle" => "The League",
-        "teams" => $teams, // Indexé par ID
-        "players" => $players, // Liste brute (pour boucler sur tous)
-        "playersById" => $playersById, // Indexé par ID (pour l'accès direct par ID)
+        "teams" => $teams, 
+        "players" => $players, 
+        "playersById" => $playersById,
         "matches" => $games
     ]);
 
