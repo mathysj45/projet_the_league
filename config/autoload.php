@@ -1,6 +1,8 @@
 <?php
 require "models/Teams.php";
 require "models/Players.php";
+require "models/PlayerPerformance.php";
+
 
 require "managers/AbstractManager.php";
 require "managers/TeamManager.php";
