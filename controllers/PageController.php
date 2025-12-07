@@ -98,31 +98,27 @@ class PageController extends AbstractController
         $perfManager = new Player_PerformanceManager();
         $teamManager = new TeamManager();
         
-        // Récupérer toutes les équipes une seule fois.
-        // Il est plus simple de le faire ici, car elles sont nécessaires dans les deux cas (liste et détail).
         $teams = $teamManager->getAllTeam(); 
 
         if (isset($_GET['id'])) {
-            // Logique pour l'affichage d'un seul match (détails)
             $id = (int)$_GET['id'];
             
             $game = $gameManager->getGameById($id); 
-            $stats = $perfManager->getStatsByPlayerId($id); 
+            $stats = $perfManager->getStatsByGameId($id); 
 
             $this->render("match", [
                 "match" => $game,
                 "stats" => $stats,
                 "pageTitle" => "Détails du match",
-                "teams" => $teams, // Passé ici
+                "teams" => $teams,
             ]);
         }
         else 
         {
-            // Logique pour l'affichage de TOUS les matchs (liste)
             $games = $gameManager->getAllGames();
             $this->render("match", [
                 "matches" => $games,
-                "teams" => $teams, // C'est ici qu'il fallait le passer !
+                "teams" => $teams,
                 "pageTitle" => "Les matchs"
             ]);
         }
