@@ -60,7 +60,7 @@ class PageController extends AbstractController
     {
         $playerManager = new PlayerManager();
         $teamManager = new TeamManager();
-
+        $gameManager = new GameManager();
         if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
@@ -70,11 +70,12 @@ class PageController extends AbstractController
             $stats = $perfManager->getStatsByPlayerId($id);
 
             $teams = $teamManager->getAllTeam(); 
-
+            $games = $gameManager->getAllGames();
             $this->render("player", [
                 "player" => $player,
                 "stats" => $stats,
                 "teams" => $teams,
+                "games" => $games,
                 "pageTitle" => "Profil du joueur"
             ]);
         } 

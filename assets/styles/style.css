@@ -506,19 +506,24 @@ img.winner {
     border-collapse: collapse; 
     border: 0.2px solid #1c2541;
     background-color: transparent;
+    min-height: 200px;
+    vertical-align: top;
 }
+
 
 .stats-table th, 
 .stats-table td {
-    border: 0.2px solid #1c2541; 
+    border-top: 0.2px solid #1c2541; 
     padding: 12px 15px;
     text-align: center;
+    
 }
 
 .stats-table thead tr {
     background-color: transparent;
     color: white;
     text-transform: uppercase;
+    border: none;
 }
 
 .stats-table td.nom_match {

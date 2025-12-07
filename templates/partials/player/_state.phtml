@@ -15,15 +15,32 @@
             </thead>
             <tbody>
                 <?php foreach($stats as $stat) { ?>
+                    <?php 
                     
-                <tr>
+                        foreach($games as $game) {
+                            if ($game->getId() == $stat->getGameId()) {
+                                $gam = $game;
+                            }
+
+                        }
+                        if ($gam->getWinner() == $player->getTeam())
+                        { 
+                            $truc = "oui";
+                        } 
+                        else 
+                        {
+                            
+                            $truc = "non";
+                        }
+                        ?>
+                    <tr>
                     <td class="nom_match"><?= $stat->getGameName() ?></td>
                     
                     <td><?= $stat->getPoints() ?></td>
                     
                     <td><?= $stat->getAssists() ?></td>
                     
-                    <td class="col-green">-</td> 
+                    <td class="col-green"><?= $truc?></td> 
                 </tr>
                 <?php } ?>
             </tbody>
