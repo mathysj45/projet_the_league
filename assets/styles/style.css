@@ -262,11 +262,7 @@ nav a:hover
 
 .contenue_teams h2,
 .contenue_player h2,
-.contenu_pp h2,
-.notFound_contenu p,
-.teammates-section h3,
-.contenu_pp h2,
-.profile-header h2
+.notFound_contenu p
 {
     color: #d4b52f;
     font-weight: 700;
@@ -276,9 +272,7 @@ nav a:hover
 }
 
 .contenue_teams img,
-.contenue_player img,
-.column_player img,
-.profile-image-container img
+.contenue_player img
 {
     width: 17vw;
     height: 17vw;
@@ -322,8 +316,7 @@ nav a:hover
 .column_teams button,
 .column_player button,
 .match button,
-.notFound_contenu button,
-.column_player button
+.notFound_contenu button
 {
     border: 1px solid #d4b52f;
     border-radius: 5px;
@@ -334,8 +327,7 @@ nav a:hover
 
 .column_teams button:hover,
 .column_player button:hover,
-.match button:hover,
-.column_player button:hover
+.match button:hover
 {
     color: #d97ab5;
     border-color: #d97ab5;
@@ -420,30 +412,6 @@ nav a:hover
     border-color: #45a0ec;
 }
 
-/* ========================Détails PLAYER=========================== */
-
-.contenu_pp h2
-{
-    color: #45a0ec;
-}
-
-.profile-header h2
-{
-    color: #d97ab5;
-}
-
-.column_player button
-{
-    color:#83a1bb;
-    border-color: #83a1bb;
-}
-
-.profile-header img
-{
-    display: block;
-    margin: 0 auto;
-}
-
 /* =============MATCHS================= */
 
 .match_contenue h2
@@ -520,38 +488,14 @@ img.winner {
 /* =================Tableau================= */
 .stats-table {
     width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    border-collapse: collapse; 
-    border: 0.2px solid #1c2541;
-    background-color: transparent;
-}
-
-.stats-table th, 
-.stats-table td {
-    border: 0.2px solid #1c2541; 
-    padding: 12px 15px;
     text-align: center;
-}
-
-.stats-table thead tr {
-    background-color: transparent;
     color: white;
-    text-transform: uppercase;
+    border-collapse: collapse;
 }
 
-.stats-table td.nom_match {
-    color: #d4b52f;
-}
-
-.col-green {
-    font-weight: bold;
-    color: green;
-}
-
-.nom_pp {
-    text-align: left; 
-    font-weight: bold;
+.stats-table th, .stats-table td {
+    padding: 10px;
+    border-bottom: 1px solid #444;
 }
 
 /*=================Total des points=================*/
