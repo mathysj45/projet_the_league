@@ -8,7 +8,9 @@
                 <img src="<?= $team->getLogo() ?>" alt="all teams">
                 <h3><?= $team->getName() ?></h3>
                 <h4><?= $team->getDescription() ?></h4>
-                <button type="submit">Découvrez <?= $team->getName()  ?></button>
+                <a href="?route=team&id=<?= $team->getId() ?>" class="button_detail">
+                    <button type="button">Découvrez <?= $team->getName() ?></button>
+                </a>
             </div>
             <?php } ?>
         </div>

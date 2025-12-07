@@ -50,7 +50,7 @@ nav a:hover
     scale: 1.1;
 }
 
-.banniere 
+.banniere
 {
     text-align: center;
     background-image: url('../image/home_background_league.png');
@@ -257,7 +257,8 @@ nav a:hover
 /* ================TEAMS================= */
 
 .contenue_teams h2,
-.contenue_player h2
+.contenue_player h2,
+.notFound_contenu p
 {
     color: #d4b52f;
     font-weight: 700;
@@ -310,7 +311,8 @@ nav a:hover
 
 .column_teams button,
 .column_player button,
-.match button
+.match button,
+.notFound_contenu button
 {
     border: 1px solid #d4b52f;
     border-radius: 5px;
@@ -356,7 +358,8 @@ nav a:hover
     color: #d97ab5;
 }
 
-.column_player button:hover
+.column_player button:hover,
+.notFound_contenu button:hover
 {
     color: #45a0ec;
     border-color: #45a0ec;
@@ -426,3 +429,25 @@ nav a:hover
     border-color: #d4b52f;
 }
 
+/* ===================404================= */
+.notFound_contenu p
+{
+    margin: 3rem;
+}
+
+.notFound_contenu button
+{
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #d97ab5;
+    padding: 6px 11px ;
+    font-size: 3rem;
+    font-weight: 700;
+    border-radius: 15px;
+    color: #d97ab5;
+}
+
+.notFound_contenu button:hover
+{
+    scale: 1.5;
+}
