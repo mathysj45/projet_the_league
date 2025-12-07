@@ -1,18 +1,61 @@
-<section class="teams">
-    <div class="contenue_teams">
-        <h2>LES TEAMS DE LA LEAGUE</h2>
-        <div class="vrap_teams">
-            <?php foreach($data['teams'] as $team)
-                { ?>
-            <div class="column_teams">
-                <img src="<?= $team->getLogo() ?>" alt="all teams">
-                <h3><?= $team->getName() ?></h3>
-                <h4><?= $team->getDescription() ?></h4>
-                <a href="?route=team&id=<?= $team->getId() ?>" class="button_detail">
-                    <button type="button">Découvrez <?= $team->getName() ?></button>
+<?php if (isset($team)): ?>
+
+    <section class="teams">
+        <div class="contenue_teams">
+            <h2 class="team-detail-title">
+                <?= $team->getName() ?>
+            </h2>
+
+            <div class="vrap_teams">
+                <?php 
+                $players = $team->getPlayers(); 
+                ?>
+
+                <?php if (!empty($players)): ?>
+                    <?php foreach($players as $player): ?>
+                    <div class="column_teams">
+                        <img class="player-portrait" src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>">
+                        
+                        <h3 class="player-nickname"><?= $player->getNickname() ?></h3>
+                        
+                        <a href="index.php?route=player&id=<?= $player->getId() ?>">
+                            <button type="button">DÉCOUVREZ <?= $player->getNickname() ?></button>
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="no-players-msg">Aucun joueur trouvé pour cette équipe.</p>
+                <?php endif; ?>
+            </div>
+            
+            <div class="back-btn-container">
+                <a href="index.php?route=team" class="btn-back">
+                    RETOUR AUX ÉQUIPES
                 </a>
             </div>
-            <?php } ?>
         </div>
-    </div>
-</section>
+    </section>
+
+<?php else: ?>
+
+    <section class="teams">
+        <div class="contenue_teams">
+            <h2>LES TEAMS DE LA LEAGUE</h2>
+            <div class="vrap_teams">
+                <?php foreach($teams as $teamItem): ?>
+                <div class="column_teams">
+                    <img src="<?= $teamItem->getLogo() ?>" alt="<?= $teamItem->getName() ?>">
+                    
+                    <h3><?= $teamItem->getName() ?></h3>
+                    <h4><?= $teamItem->getDescription() ?></h4>
+                    
+                    <a href="index.php?route=team&id=<?= $teamItem->getId() ?>">
+                        <button type="button">Découvrez <?= $teamItem->getName() ?></button>
+                    </a>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+<?php endif; ?>

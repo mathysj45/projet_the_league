@@ -246,6 +246,10 @@ nav a:hover
     gap: 0.8vw;
     padding: 10px;
 }
+.img_matche_du_jour img.winner {
+    border: 1px solid #509d77 !important;
+    
+}
 .img_matche_du_jour img
 {
     width: 26vw;
@@ -330,6 +334,49 @@ nav a:hover
     scale: 1.1;
 }
 
+/* =======PAGE DÉTAIL TEAM======= */
+
+.team-detail-title {
+    color: #d97ab5;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+
+.column_teams .player-portrait {
+    object-fit: cover;
+}
+
+
+.column_teams .player-nickname {
+    color: #d97ab5;
+}
+
+
+.no-players-msg {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.back-btn-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-back {
+    color: #ffc107;
+    border: 1px solid #ffc107;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #ffc107;
+    color: #000;
+}
 /* ============PLAYERS================ */
 
 .contenue_player h2
@@ -376,6 +423,10 @@ nav a:hover
     color: #45a0ec;
 }
 
+img.winner {
+    border: 1px solid #509d77 !important;
+    
+}
 .match
 {
     display: flex;

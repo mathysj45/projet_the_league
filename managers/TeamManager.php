@@ -8,7 +8,6 @@ class TeamManager extends AbstractManager
     
     }
 
-    // RENVOIE UN TABLEAU ASSOCIATIF [ID => Team]
     public function getAllTeam(): array
     {
         $query = $this->db->prepare("SELECT teams.id AS team_id, teams.name, teams.description, media.url AS logo
@@ -22,9 +21,6 @@ class TeamManager extends AbstractManager
 
         foreach ($results as $result) {
             
-            // Récupérer les joueurs de l’équipe
-            // NOTE: Pour l'optimisation, on pourrait mettre ceci dans PlayerManager
-            // ou utiliser une requête JOIN LEFT plus complexe si le nombre d'équipes est très grand.
             $qPlayers = $this->db->prepare("SELECT players.id, players.nickname, players.bio, media.url AS portrait , players.team
             FROM players
             JOIN media ON players.portrait = media.id
@@ -35,11 +31,10 @@ class TeamManager extends AbstractManager
             $players = [];
 
             foreach ($playersData as $p) {
-                // Assurez-vous que Player existe et que le constructeur correspond
+
                 $players[] = new Player($p["id"], $p["nickname"], $p["bio"], $p["portrait"], $p["team"]);
             }
             
-            // Créer l’objet Team et l'ajouter au tableau en utilisant l'ID comme clé
             $teams[$result["team_id"]] = new Team(
                 $result["team_id"],
                 $result["name"],
@@ -70,7 +65,6 @@ class TeamManager extends AbstractManager
             return null;
         }
 
-        // Récupérer les joueurs de la team
         $qPlayers = $this->db->prepare("SELECT players.id , players.nickname, players.bio, media.url AS portrait , players.team
             FROM players
             JOIN media ON players.portrait = media.id
@@ -80,7 +74,6 @@ class TeamManager extends AbstractManager
 
         $players = [];
         foreach ($playersData as $p) {
-            // Assurez-vous que Player existe et que le constructeur correspond
             $players[] = new Player($p["id"], $p["nickname"], $p["bio"], $p["portrait"], $p["team"]);
         }
 

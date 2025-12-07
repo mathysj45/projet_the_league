@@ -108,7 +108,7 @@ class PageController extends AbstractController
             $id = (int)$_GET['id'];
             
             $game = $gameManager->getGameById($id); 
-            $stats = $perfManager->getStatsByMatchId($id); 
+            $stats = $perfManager->getStatsByPlayerId($id); 
 
             $this->render("match", [
                 "match" => $game,
