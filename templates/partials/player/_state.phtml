@@ -1,5 +1,6 @@
 <section class="player-performances">
-    <h3 class="section-title-blue">SES PERFORMANCES</h3>
+    <div class="contenu_pp">
+    <h2>SES PERFORMANCES</h2>
 
     <?php if (!empty($stats)) { ?>
         
@@ -15,7 +16,7 @@
             <tbody>
                 <?php foreach($stats as $stat) { ?>
                 <tr>
-                    <td class="col-yellow"><?= $stat->getGameName() ?></td>
+                    <td class="nom_match"><?= $stat->getGameName() ?></td>
                     
                     <td><?= $stat->getPoints() ?></td>
                     
@@ -30,4 +31,5 @@
     <?php } else { ?>
         <p class="no-stats">Aucune performance enregistrée.</p>
     <?php } ?>
+    </div>
 </section>
