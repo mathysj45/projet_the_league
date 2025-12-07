@@ -366,24 +366,6 @@ nav a:hover
     font-size: 1.2rem;
 }
 
-.back-btn-container {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.btn-back {
-    color: #ffc107;
-    border: 1px solid #ffc107;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.btn-back:hover {
-    background-color: #ffc107;
-    color: #000;
-}
 /* ============PLAYERS================ */
 
 .contenue_player h2
