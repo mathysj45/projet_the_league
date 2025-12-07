@@ -10,7 +10,7 @@ class PlayerManager extends AbstractManager
 
     public function getPlayerById(int $id) : Player
     {
-        $query = $this->db->prepare('SELECT players.id , players.nickname,media.url as logo ,players.team FROM players 
+        $query = $this->db->prepare('SELECT players.id , players.nickname,players.bio,media.url as portrait ,players.team FROM players 
                                             JOIN media on players.portrait = media.id 
                                             WHERE players.id = :id ;' );
         $parameters = [
