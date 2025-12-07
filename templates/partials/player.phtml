@@ -2,38 +2,65 @@
 if (isset($player)) { 
 ?>
     <section class="player-profile">
-        <div>
-            <img src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>">
-            <h2><?= $player->getNickname() ?></h2>
-            
-            <h3>
-                <?php 
-                $teamId = $player->getTeam();
-                if (isset($data['teams'])) {
-                    $teamFound = false;
-                    foreach ($data['teams'] as $t) {
-                        if ($t->getId() == $teamId) {
-                            echo $t->getName();
-                            $teamFound = true;
-                            break;
-                        }
-                    }
-                    if (!$teamFound) { echo "Team #" . $teamId; }
-                } else {
-                    echo "Team #" . $teamId;
-                }
-                ?>
-            </h3>
+        <div class="profile-header">
+            <h2 class="profile-nickname"><?= $player->getNickname() ?></h2>
+            <div class="profile-image-container">
+                <img src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>">
+            </div>
         </div>
 
         <?php 
         require "templates/partials/player/_state.phtml"; 
         ?>
 
-        <div>
-            <a href="index.php?route=player">
-                <button type="button">Retour à la liste</button>
-            </a>
+        <div class="teammates-section">
+            <h3 class="section-title-yellow">SA TEAM</h3>
+            
+            <div class="vrap_teams">
+                <?php 
+                $teammatesFound = false;
+                
+                if (isset($data['teams'])) {
+                    $currentTeamId = $player->getTeam();
+                    $currentTeamObj = null;
+
+                    foreach ($data['teams'] as $t) {
+                        if ($t->getId() == $currentTeamId) {
+                            $currentTeamObj = $t;
+                            break;
+                        }
+                    }
+
+                    if ($currentTeamObj) {
+                        $allPlayersInTeam = $currentTeamObj->getPlayers();
+                        
+                        foreach ($allPlayersInTeam as $teammate) {
+                            if ($teammate->getId() !== $player->getId()) {
+                                $teammatesFound = true;
+                ?>
+                                <div class="column_player">
+                                    <img src="<?= $teammate->getPortrait() ?>" alt="<?= $teammate->getNickname() ?>">
+                                    <h3 class="teammate-name"><?= $teammate->getNickname() ?></h3>
+                                    
+                                    <a href="index.php?route=player&id=<?= $teammate->getId() ?>">
+                                        <button type="button">DÉCOUVREZ <?= $teammate->getNickname() ?></button>
+                                    </a>
+                                </div>
+                <?php 
+                            }
+                        }
+                    }
+                }
+                
+                if (!$teammatesFound) {
+                    echo "<p>Aucun coéquipier trouvé.</p>";
+                }
+                ?>
+            </div>
+        </div>
+        
+        <div class="back-btn-container">
+             <a href="index.php?route=player" class="btn-back">RETOUR À LA LISTE</a>
         </div>
     </section>
 
@@ -55,13 +82,9 @@ else {
         <div class="contenue_player">
             <h2>LES PLAYERS DE LA LEAGUE</h2>
             
-            <?php 
-            if (isset($players) && !empty($players)) { 
-            ?>
+            <?php if (isset($players) && !empty($players)) { ?>
                 <div class="vrap_teams"> 
-                    <?php 
-                    foreach ($players as $playerItem) { 
-                    ?>
+                    <?php foreach ($players as $playerItem) { ?>
                         <div class="column_player">
                             <img src='<?= $playerItem->getPortrait() ?>' alt="Portrait">
                             <h3><?= $playerItem->getNickname() ?></h3>
@@ -81,17 +104,11 @@ else {
                                 <button type="button">Découvrez <?= $playerItem->getNickname() ?></button>
                             </a>
                         </div>
-                    <?php 
-                    } 
-                    ?>
+                    <?php } ?>
                 </div>
-            <?php 
-            } else { 
-            ?>
+            <?php } else { ?>
                 <p>Aucun joueur trouvé.</p>
-            <?php 
-            }
-            ?>
+            <?php } ?>
         </div>
     </section>
 <?php 

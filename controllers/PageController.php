@@ -59,37 +59,36 @@ class PageController extends AbstractController
   public function player() : void
     {
         $playerManager = new PlayerManager();
-        $perfManager = new Player_PerformanceManager();
+        $teamManager = new TeamManager();
 
-
-        
         if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
             $player = $playerManager->getPlayerById($id);
-
-            if ($player) {
-                 $stats = $perfManager->getStatsByPlayerId($id); 
             
-            } else {
-                 $stats = null;
-            }
+            $perfManager = new Player_PerformanceManager();
+            $stats = $perfManager->getStatsByPlayerId($id);
+
+            $teams = $teamManager->getAllTeam(); 
 
             $this->render("player", [
                 "player" => $player,
-                "pageTitle" => "Profil du joueur",
-                "stats" => $stats 
+                "stats" => $stats,
+                "teams" => $teams,
+                "pageTitle" => "Profil du joueur"
             ]);
         } 
         else 
         {
             $players = $playerManager->getAllPlayers();
+            $teams = $teamManager->getAllTeam(); 
+
             $this->render("player", [
                 "players" => $players,
+                "teams" => $teams,
                 "pageTitle" => "Les players"
             ]);
         }
-        
     }
 
     // --- GESTION DES MATCHS ---

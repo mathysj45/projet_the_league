@@ -1,38 +1,33 @@
 <section class="player-performances">
-    <h3>SES PERFORMANCES</h3>
+    <h3 class="section-title-blue">SES PERFORMANCES</h3>
 
     <?php if (!empty($stats)) { ?>
         
         <table class="stats-table">
             <thead>
                 <tr>
-                    <th>Match</th>
-                    <th>Points</th>
-                    <th>Assists</th>
+                    <th class="col-yellow">TEAM ADVERSE</th>
+                    <th>POINTS</th>
+                    <th>ASSISTS</th>
+                    <th>VICTOIRE ?</th>
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                $totalPoints = 0; 
-                
-                foreach($stats as $stat) { 
-                    $totalPoints += $stat->getPoints(); 
-                ?>
+                <?php foreach($stats as $stat) { ?>
                 <tr>
-                    <td><?= $stat->getGameName() ?></td>
+                    <td class="col-yellow"><?= $stat->getGameName() ?></td>
                     
                     <td><?= $stat->getPoints() ?></td>
+                    
                     <td><?= $stat->getAssists() ?></td>
+                    
+                    <td class="col-green">-</td> 
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
 
-        <div class="stats-total">
-            <strong>Points Totaux sur la carrière : <?= $totalPoints ?></strong>
-        </div>
-
     <?php } else { ?>
-        <p class="no-stats">Aucune statistique disponible.</p>
+        <p class="no-stats">Aucune performance enregistrée.</p>
     <?php } ?>
 </section>
