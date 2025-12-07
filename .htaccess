@@ -1,0 +1,27 @@
+RewriteEngine On
+
+RewriteBase /cour-php-coda/projet_the_league/
+
+# Disable directory listing
+Options -Indexes
+
+# Allow direct access to files and directories that exist
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# --- NOUVELLE RÈGLE : Gère /player/2 ou /team/3, etc. ---
+# Elle capture le nom de la route ($1) et l'ID optionnel ($2)
+# Exemple: /player/2 est réécrit en index.php?route=player&id=2
+RewriteRule ^([a-zA-Z0-9_-]+)/([0-9]+)/?$ index.php?route=$1&id=$2 [QSA,L]
+
+# --- RÈGLE GÉNÉRIQUE : Gère /player ou /team (sans ID) ---
+# Exemple: /player est réécrit en index.php?route=player
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ index.php?route=$1 [QSA,L]
+
+# Root / -> index.php
+RewriteRule ^$ index.php [QSA,L]
+
+# Catch-all for undefined routes -> 404 (Cette règle est probablement obsolète 
+# car la règle précédente capture tout, mais on la garde pour l'exemple original)
+# RewriteRule ^(.*)$ index.php?page=404 [QSA,L]

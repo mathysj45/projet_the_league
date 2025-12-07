@@ -18,7 +18,7 @@
                         
                         <h3 class="player-nickname"><?= $player->getNickname() ?></h3>
                         
-                        <a href="index.php?route=player&id=<?= $player->getId() ?>">
+                        <a href="/cour-php-coda/projet_the_league/player/<?= $player->getId() ?>">
                             <button type="button">DÉCOUVREZ <?= $player->getNickname() ?></button>
                         </a>
                     </div>
@@ -29,7 +29,7 @@
             </div>
             
             <div class="back-btn-container">
-                <a href="index.php?route=team" class="btn-back">
+                <a href="/cour-php-coda/projet_the_league/team" class="btn-back">
                     RETOUR AUX ÉQUIPES
                 </a>
             </div>
@@ -49,7 +49,7 @@
                     <h3><?= $teamItem->getName() ?></h3>
                     <h4><?= $teamItem->getDescription() ?></h4>
                     
-                    <a href="index.php?route=team&id=<?= $teamItem->getId() ?>">
+                    <a href="/cour-php-coda/projet_the_league/team/<?= $teamItem->getId() ?>">
                         <button type="button">Découvrez <?= $teamItem->getName() ?></button>
                     </a>
                 </div>
