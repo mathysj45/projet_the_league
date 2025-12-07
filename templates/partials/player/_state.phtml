@@ -1,15 +1,38 @@
+<section class="player-performances">
+    <h3>SES PERFORMANCES</h3>
 
-<?php if (isset($stats[0])): ?>
+    <?php if (!empty($stats)) { ?>
+        
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Match</th>
+                    <th>Points</th>
+                    <th>Assists</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $totalPoints = 0; 
+                
+                foreach($stats as $stat) { 
+                    $totalPoints += $stat->getPoints(); 
+                ?>
+                <tr>
+                    <td><?= $stat->getGameName() ?></td>
+                    
+                    <td><?= $stat->getPoints() ?></td>
+                    <td><?= $stat->getAssists() ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
 
-    <div class="stats_box">
-        <h3>Statistiques globales</h3>
-        
-        <p>Points Totaux: <strong><?= $stats->getTotalPoints() ?></strong></p>
-        <p>Matchs Joués: <strong><?= $stats->getGamesPlayed() ?></strong></p>
-        
-        <p>Taux de victoire: <strong><?= $stats['win_rate'] ?></strong></p>
-    </div>
-    
-<?php else: ?>
-    <p>Aucune statistique disponible pour ce joueur.</p>
-<?php endif; ?>
+        <div class="stats-total">
+            <strong>Points Totaux sur la carrière : <?= $totalPoints ?></strong>
+        </div>
+
+    <?php } else { ?>
+        <p class="no-stats">Aucune statistique disponible.</p>
+    <?php } ?>
+</section>
