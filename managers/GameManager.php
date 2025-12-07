@@ -10,7 +10,7 @@ class GameManager extends AbstractManager
 
     public function getAllGames() : array
     {
-        $query = $this->db->prepare("SELECT * FROM games ORDER BY date DESC");
+        $query = $this->db->prepare("SELECT id, name, DATE(date) AS date, team_1, team_2, winner FROM games ORDER BY date DESC");
         $parameters = [
 
         ];
@@ -28,7 +28,7 @@ class GameManager extends AbstractManager
 
     public function getGameById(int $id) : Game
     {
-        $query = $this->db->prepare("SELECT * FROM games WHERE id = :id ORDER BY date DESC;");
+        $query = $this->db->prepare("SELECT id, name, DATE(date) AS date, team_1, team_2, winner FROM games WHERE id = :id ORDER BY date DESC;");
         $parameters = [
             'id' => $id
         ];

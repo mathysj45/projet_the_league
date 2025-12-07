@@ -1,5 +1,4 @@
-*
-{
+*{
     margin: 0;
     padding: 0;
     font-family: 'roboto', sans-serif;
@@ -262,7 +261,11 @@ nav a:hover
 
 .contenue_teams h2,
 .contenue_player h2,
-.notFound_contenu p
+.contenu_pp h2,
+.notFound_contenu p,
+.teammates-section h3,
+.contenu_pp h2,
+.profile-header h2
 {
     color: #d4b52f;
     font-weight: 700;
@@ -272,7 +275,9 @@ nav a:hover
 }
 
 .contenue_teams img,
-.contenue_player img
+.contenue_player img,
+.column_player img,
+.profile-image-container img
 {
     width: 17vw;
     height: 17vw;
@@ -316,7 +321,8 @@ nav a:hover
 .column_teams button,
 .column_player button,
 .match button,
-.notFound_contenu button
+.notFound_contenu button,
+.column_player button
 {
     border: 1px solid #d4b52f;
     border-radius: 5px;
@@ -327,7 +333,8 @@ nav a:hover
 
 .column_teams button:hover,
 .column_player button:hover,
-.match button:hover
+.match button:hover,
+.column_player button:hover
 {
     color: #d97ab5;
     border-color: #d97ab5;
@@ -412,6 +419,30 @@ nav a:hover
     border-color: #45a0ec;
 }
 
+/* ========================Détails PLAYER=========================== */
+
+.contenu_pp h2
+{
+    color: #45a0ec;
+}
+
+.profile-header h2
+{
+    color: #d97ab5;
+}
+
+.column_player button
+{
+    color:#83a1bb;
+    border-color: #83a1bb;
+}
+
+.profile-header img
+{
+    display: block;
+    margin: 0 auto;
+}
+
 /* =============MATCHS================= */
 
 .match_contenue h2
@@ -488,14 +519,38 @@ img.winner {
 /* =================Tableau================= */
 .stats-table {
     width: 100%;
-    text-align: center;
-    color: white;
-    border-collapse: collapse;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse; 
+    border: 0.2px solid #1c2541;
+    background-color: transparent;
 }
 
-.stats-table th, .stats-table td {
-    padding: 10px;
-    border-bottom: 1px solid #444;
+.stats-table th, 
+.stats-table td {
+    border: 0.2px solid #1c2541; 
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.stats-table thead tr {
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+}
+
+.stats-table td.nom_match {
+    color: #d4b52f;
+}
+
+.col-green {
+    font-weight: bold;
+    color: green;
+}
+
+.nom_pp {
+    text-align: left; 
+    font-weight: bold;
 }
 
 /*=================Total des points=================*/
@@ -527,4 +582,107 @@ img.winner {
 .notFound_contenu button:hover
 {
     scale: 1.5;
+}
+
+/* ===================MATCH================= */
+/* ==================================== */
+/* DÉTAIL DU MATCH (match-detail-container) */
+/* ==================================== */
+
+.match-detail-container {
+    max-width: 1000px;
+    margin: 40px auto; /* Mettre un peu d'espace autour */
+    padding: 20px;
+    text-align: center;
+}
+
+.match-versus-title {
+    /* Basé sur la maquette : gros titre, couleur vive */
+    color: #45a0ec; /* Violet */
+    font-size: 2.1em; 
+    font-family: 'Ubuntu', sans-serif; /* Si cette police est chargée */
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.match-date-large {
+    color: #45a0ec; /* Bleu clair pour la date */
+    margin-top: 20px;
+    font-size: 1em;
+    margin-bottom: 50px;
+}
+
+.versus-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8vw;
+    margin-bottom: 60px;
+}
+.big-logo.winner {
+    border: 3px solid #509d77 !important;
+}
+.big-logo {
+    width: 25vw;
+    height: auto;
+    object-fit: contain;
+}
+
+.perf-section-title {
+    color: #9e87cb  ;
+    font-size: 2.8em;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.match-stats-table {
+    margin: 20px auto 40px auto;
+    width: 90%; 
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden; 
+    
+    border: #9e87cb 0.1px solid;
+}
+
+.match-stats-table thead th {
+
+    color: #ffffff;
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    
+}
+
+.match-stats-table td {
+    padding: 12px 25px;
+    border-top:#9e87cb 0.1px solid;
+    border-bottom:#9e87cb 0.1px solid ;
+    font-size: 0.7em;
+    vertical-align: middle;
+}
+
+.col-pink {
+    color: #f7a5ff; 
+    font-weight: bold;
+    text-align: center; 
+    padding-left: 30px; 
+}
+
+.col-yellow {
+    color: #ffc300; 
+    font-weight: 500;
+    text-align: center;
+}
+
+.col-white {
+    color: #ffffff;
+    font-weight: 500;
+    text-align: center;
 }

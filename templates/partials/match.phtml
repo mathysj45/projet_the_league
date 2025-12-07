@@ -15,13 +15,28 @@ if (isset($match)) {
         
         <div class="match-date-large"><?= $match->getDate() ?></div>
 
+        <?php 
+            $winnerId = (int)$match->getWinner();
+            $team1Id  = (int)$match->getTeam1();
+            $team2Id  = (int)$match->getTeam2();
+
+            $classTeam1 = '';
+            $classTeam2 = '';
+            if ($winnerId !== 0) {
+                if ($winnerId === $team1Id) {
+                    $classTeam1 = 'winner';
+                } elseif ($winnerId === $team2Id) {
+                    $classTeam2 = 'winner';
+                }
+            }
+        ?>
         <div class="versus-logos">
             <?php if ($logo1) { ?>
-                <img class="big-logo" src="<?= $logo1 ?>" alt="Team 1">
+                <img class="big-logo <?= $classTeam1 ?>" src="<?= $logo1 ?>" alt="Team 1">
             <?php } ?>
             
             <?php if ($logo2) { ?>
-                <img class="big-logo" src="<?= $logo2 ?>" alt="Team 2">
+                <img class="big-logo <?= $classTeam2 ?>" src="<?= $logo2 ?>" alt="Team 2">
             <?php } ?>
         </div>
 
@@ -55,10 +70,6 @@ if (isset($match)) {
                 <?php } ?>
             </tbody>
         </table>
-
-        <div style="margin-bottom: 50px;">
-            <a href="index.php?route=match" class="btn-back">RETOUR AUX MATCHS</a>
-        </div>
 
     </section>
 
