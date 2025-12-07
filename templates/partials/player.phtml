@@ -42,7 +42,7 @@ if (isset($player)) {
                                     <img src="<?= $teammate->getPortrait() ?>" alt="<?= $teammate->getNickname() ?>">
                                     <h3 class="teammate-name"><?= $teammate->getNickname() ?></h3>
                                     
-                                    <a href="/projet_the_league/player/<?= $teammate->getId() ?>">
+                                    <a href="<?= BASE_URL ?>/player/<?= $teammate->getId() ?>">
                                         <button type="button">DÉCOUVREZ <?= $teammate->getNickname() ?></button>
                                     </a>
                                 </div>
@@ -60,7 +60,7 @@ if (isset($player)) {
         </div>
         
         <div class="back-btn-container">
-             <a href="/projet_the_league/player" class="btn-back">RETOUR À LA LISTE</a>
+             <a href="<?= BASE_URL ?>/player" class="btn-back">RETOUR À LA LISTE</a>
         </div>
     </section>
 
@@ -100,7 +100,7 @@ else {
                             ?>
                             </h4>
                             
-                            <a href="/projet_the_league/player/<?= $playerItem->getId() ?>">
+                            <a href="<?= BASE_URL ?>/player/<?= $playerItem->getId() ?>">
                                 <button type="button">Découvrez <?= $playerItem->getNickname() ?></button>
                             </a>
                         </div>
