@@ -27,11 +27,11 @@ class Player_PerformanceManager extends AbstractManager
 
         foreach ($results as $data) {
             $performance = new PlayerPerformance(
-                (int)$data['player'],
-                (int)$data['game'],
-                (int)$data['points'],
-                (int)$data['assists'],
-                (string)$data['game_name'] 
+                $data['player'],
+                $data['game'],
+                $data['points'],
+                $data['assists'],
+                $data['game_name'] 
             );
             
             $performances[] = $performance;
