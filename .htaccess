@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteBase /cour-php-coda/projet_the_league/   
+
+Options -Indexes
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([0-9]+)/?$ index.php?route=$1&id=$2 [QSA,L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ index.php?route=$1 [QSA,L]
+
+RewriteRule ^$ index.php [QSA,L]
