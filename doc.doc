@@ -1,0 +1,43 @@
+Consignes de Configuration Locale (Dépendances PC)
+Les éléments suivants doivent être modifiés par chaque développeur pour adapter le projet à son environnement local (arborescence du serveur et base de données) :
+
+1. Configuration du Chemin de Base (RewriteBase)
+    Fichier/Ligne : .htaccess, Ligne 3 (RewriteBase)
+
+    Action : Définir le chemin d'accès au dossier du projet à partir de la racine de l'hôte (http://localhost/).
+
+    Exemple actuel : RewriteBase /cour-php-coda/projet_the_league/
+
+    Modification :
+
+        Si le dossier projet_the_league est directement sous htdocs ou la racine de l'hôte virtuel, la ligne devient : RewriteBase /projet_the_league/
+
+        Attention : Le chemin doit inclure le / (slash) à la fin.
+
+2. Définition de l'URL de Base (BASE_URL)
+    Fichier/Ligne : index.php, Ligne 6 (define('BASE_URL', ...);)
+
+    Action : Définir la constante PHP qui sera utilisée pour générer tous les liens et chemins vers les assets dans le code.
+
+    Règle : La valeur doit correspondre exactement au chemin défini dans le .htaccess (Point 1), mais sans le slash final (/).
+
+    Exemple actuel : define('BASE_URL', '/cour-php-coda/projet_the_league');
+
+        Modification :
+
+        Si le nouveau chemin est /projet_the_league/, la ligne devient : define('BASE_URL', '/projet_the_league');
+
+3. Accès à la Base de Données (Connexion PDO)
+    Fichier/Ligne : managers/AbstractManager (dans la méthode de connexion)
+
+    Action : Renseigner les identifiants de connexion MySQL/MariaDB propres à la machine locale.
+
+    Exemples :
+
+    $user = "root";
+
+    $password = "";
+
+    Modification :
+
+        Mettre à jour $user et $password avec les identifiants utilisés pour l'environnement de développement (par défaut, le mot de passe est souvent vide "").
