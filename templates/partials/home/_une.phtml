@@ -8,22 +8,22 @@
             $teamUneId = 1; 
             $teamUne = $teams[$teamUneId] ?? null; // Utiliser l'opérateur null coalescing pour la sécurité
             
-            if ($teamUne):
+            if ($teamUne){
             ?>
                 <img class="img_une" src="<?= $teamUne->getLogo(); ?>" alt="<?= $teamUne->getName(); ?>">
                 <div class="column_une">
                     <h3><?= $teamUne->getName(); ?></h3>
                     <p>Les players</p>
                     <div class="for_une">
-                    <?php foreach ($teamUne->getPlayers() as $player): ?>
+                    <?php foreach ($teamUne->getPlayers() as $player){?>
                         <div class="team_tuiles">
                             <img src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>" >
                             <p><?= $player->getNickname() ?></p>
                         </div>
-                    <?php endforeach; ?>
+                    <?php } ?>
                     </div>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
     </section>
 
@@ -37,8 +37,8 @@
             $playersById[$player->getId()] = $player;
         }
 
-        foreach($idsChoisis as $playerId):
-            if (isset($playersById[$playerId])):
+        foreach($idsChoisis as $playerId) {
+            if (isset($playersById[$playerId])) {
                 $player = $playersById[$playerId];
         ?>
             <div class="player_tuiles">
@@ -49,8 +49,8 @@
                 <h4><?= $teams[$player->getTeam()]->getName() ?></h4>
             </div>
         <?php 
-            endif; 
-        endforeach; 
+            }
+        } 
         ?>
     </div>
 </section>

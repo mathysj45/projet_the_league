@@ -246,6 +246,10 @@ nav a:hover
     gap: 0.8vw;
     padding: 10px;
 }
+.img_matche_du_jour img.winner {
+    border: 1px solid #509d77 !important;
+    
+}
 .img_matche_du_jour img
 {
     width: 26vw;
@@ -416,6 +420,10 @@ nav a:hover
     color: #45a0ec;
 }
 
+img.winner {
+    border: 1px solid #509d77 !important;
+    
+}
 .match
 {
     display: flex;

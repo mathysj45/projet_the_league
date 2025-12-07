@@ -2,20 +2,40 @@
     <div class="match_contenue">
         <h2>LES MATCHS</h2>
         
-        <?php 
-        
-        foreach($data['matches'] as $game) 
-        { ?>
+        <?php foreach($data['matches'] as $game) { ?>
+            
+            <?php 
+                $winnerId = (int)$game->getWinner(); 
+                $team1Id  = (int)$game->getTeam1();
+                $team2Id  = (int)$game->getTeam2();
+
+                $classTeam1 = '';
+                $classTeam2 = '';
+
+                if ($winnerId !== 0) {
+                    if ($winnerId === $team1Id) {
+                        $classTeam1 = 'winner';
+                    } elseif ($winnerId === $team2Id) {
+                        $classTeam2 = 'winner';
+                    }
+                }
+            ?>
+
             <div class="match">
                 <h3><?= $game->getName() ?></h3>
-                <p><?=$game->getDate() ?></p>
+                <p><?= $game->getDate() ?></p>
+                
                 <div class="match_img">
+                    <img src="<?= $teams[$team1Id]->getLogo() ?>" 
+                         alt="Team 1" 
+                         class="<?= $classTeam1 ?>">
                     
-                    <img src="<?=$teams[$game->getTeam1()]->getLogo() ?>" alt="">
-                    <img src="<?=$teams[$game->getTeam2()]->getLogo() ?>" alt="">
+                    <span class="vs">VS</span>
+
+                    <img src="<?= $teams[$team2Id]->getLogo() ?>" 
+                         alt="Team 2" 
+                         class="<?= $classTeam2 ?>">
                 </div>
-                
-                
                 
                 <a href="?route=match&id=<?= $game->getId() ?>" class="button_detail">
                     <button type="button">Détails du match</button>

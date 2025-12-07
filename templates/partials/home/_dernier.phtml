@@ -3,26 +3,29 @@
         <h2>LE DERNIER MATCH</h2>
         <div class="matche_du_jour">
             
-            
             <?php 
-            $date_plus_ressent = $matches[0]->getDate(); 
-            $matche_ressent = $matches[0];
+                $winnerId = (int)$matches[0]->getWinner(); 
+                $team1Id  = (int)$matches[0]->getTeam1();
+                $team2Id  = (int)$matches[0]->getTeam2();
 
-            foreach ($matches as $matche){ 
+                $classTeam1 = '';
+                $classTeam2 = '';
 
-                $dateActuelle = $matche->getDate(); 
-                if ($dateActuelle > $date_plus_ressent) {
-                    $date_plus_ressent = $dateActuelle;
-                    $matche_ressent = $matche;
+                if ($winnerId !== 0) {
+                    if ($winnerId === $team1Id) {
+                        $classTeam1 = 'winner';
+                    } elseif ($winnerId === $team2Id) {
+                        $classTeam2 = 'winner';
+                    }
                 }
-            } ?>
-            <h3><?=$matche_ressent->getName() ?></h3>
+            ?>
+            <h3><?=$matches[0]->getName() ?></h3>
 
-            <p><?=$matche_ressent->getDate() ?></p>
+            <p><?=$matches[0]->getDate() ?></p>
             <div class="img_matche_du_jour">
-                
-                <img src="<?=$teams[$matche_ressent->getTeam1()]->getLogo() ?>" alt="">
-                <img src="<?=$teams[$matche_ressent->getTeam2()]->getLogo() ?>" alt="">
+                <img src="<?=$teams[$matches[0]->getTeam1()]->getLogo() ?>" alt="Team 1" class="<?= $classTeam1 ?>">
+
+                <img src="<?=$teams[$matches[0]->getTeam2()]->getLogo() ?>" alt="Team 2" class="<?= $classTeam2 ?>">
             </div>
         </div>
     </section>
