@@ -1,0 +1,57 @@
+<main>
+    <section class="team_une">
+        <h2>TEAM À LA UNE</h2>
+        <div class="row_une"> 
+            
+            <?php 
+            // DÉFINISSEZ L'ID DE L'ÉQUIPE À LA UNE (Exemple: ID 1)
+            $teamUneId = 1; 
+            $teamUne = $teams[$teamUneId] ?? null; // Utiliser l'opérateur null coalescing pour la sécurité
+            
+            if ($teamUne){
+            ?>
+                <img class="img_une" src="<?= $teamUne->getLogo(); ?>" alt="<?= $teamUne->getName(); ?>">
+                <div class="column_une">
+                    <h3><?= $teamUne->getName(); ?></h3>
+                    <p>Les players</p>
+                    <div class="for_une">
+                    <?php foreach ($teamUne->getPlayers() as $player){?>
+                        <div class="team_tuiles">
+                            <img src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>" >
+                            <p><?= $player->getNickname() ?></p>
+                        </div>
+                    <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+
+<section class="player_une">
+    <h2>LES PLAYERS À LA UNE</h2>
+    <div class="row2_une"> 
+        <?php 
+        $idsChoisis = [3, 14, 12]; 
+        $playersById = [];
+        foreach ($players as $player) {
+            $playersById[$player->getId()] = $player;
+        }
+
+        foreach($idsChoisis as $playerId) {
+            if (isset($playersById[$playerId])) {
+                $player = $playersById[$playerId];
+        ?>
+            <div class="player_tuiles">
+                <img class="img_perso_une" src="<?= $player->getPortrait() ?>" alt="<?= $player->getNickname() ?>">
+                
+                <h3><?= $player->getNickname() ?></h3>
+                
+                <h4><?= $teams[$player->getTeam()]->getName() ?></h4>
+            </div>
+        <?php 
+            }
+        } 
+        ?>
+    </div>
+</section>
+</main>

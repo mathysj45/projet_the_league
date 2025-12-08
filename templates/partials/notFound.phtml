@@ -1,12 +1,8 @@
-{% extends 'base.html.twig' %}
-
-{% block content %}
 <section class="notFound">
     <div class="notFound_contenu">
         <p>Bonjour je suis la page 404, j'ai le regret de vous annoncer que vous êtes perdu et quelqu'un vous a fait perdre une vie.... Respawn ?</p>
-        <a href="{{ constant('BASE_URL') }}/">
+        <a href="<?= BASE_URL ?>">
             <button>Respawn !</button>
         </a>
     </div>
 </section>
-{% endblock %}
