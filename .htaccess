@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteBase /cour-php-coda/projet_the_league/   
+RewriteBase /exercice_Php/J1-BPH/projet_the_league/   
 
 Options -Indexes
 

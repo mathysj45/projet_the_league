@@ -1,0 +1,31 @@
+<section class="player-performances">
+    <div class="contenu_pp">
+        <h2>SES PERFORMANCES</h2>
+
+        {% if stats is defined and stats is not empty %}
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th class="col-yellow">TEAM ADVERSE</th>
+                        <th>POINTS</th>
+                        <th>ASSISTS</th>
+                        <th>VICTOIRE ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stat in stats %}
+                        <tr>
+                            {# Utilise .gameName car c'est un Objet PlayerPerformance #}
+                            <td class="nom_match">{{ stat.getGameName() }}</td> 
+                            <td>{{ stat.getPoints() }}</td>
+                            <td>{{ stat.getAssists() }}</td>
+                            <td class="col-green">-</td> 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-stats">Aucune performance enregistrée.</p>
+        {% endif %}
+    </div>
+</section>

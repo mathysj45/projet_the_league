@@ -1,0 +1,11 @@
+{# templates/home.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {# On inclut les différentes sections de la page d'accueil #}
+    {% include 'partials/home/_banniere.html.twig' %}
+    
+    {% include 'partials/home/_une.html.twig' %}
+    
+    {% include 'partials/home/_dernier.html.twig' %}
+{% endblock %}

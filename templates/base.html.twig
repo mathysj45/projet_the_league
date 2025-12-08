@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageTitle is defined ? pageTitle : 'The League' }}</title>
+    
+    <link rel="stylesheet" href="{{ constant('BASE_URL') }}/assets/styles/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    {# 1. On inclut le Header (qui est dans un fichier séparé) #}
+    {% include 'partials/_header.html.twig' %}
+
+    {# 2. C'est ICI que les autres pages (home, match...) vont s'insérer #}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {# 3. Footer (si tu en as un, sinon tu peux le mettre ici direct) #}
+    <footer>
+        <p style="text-align: center; color: white; padding: 20px;">&copy; The League 2025</p>
+    </footer>
+
+</body>
+</html>

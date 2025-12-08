@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{# ========================================== #}
+{# CAS 1 : PROFIL JOUEUR (Détail)             #}
+{# ========================================== #}
+{% if player is defined and player is not null %}
+
+    <section class="player-profile">
+        <div class="profile-header">
+            <h2 class="profile-nickname">{{ player.getNickname() }}</h2>
+            <div class="profile-image-container">
+                <img src="{{ player.getPortrait() }}" alt="{{ player.getNickname() }}">
+            </div>
+        </div>
+
+        {# Inclusion des stats #}
+        {% include 'partials/player/_state.html.twig' %}
+
+        <div class="teammates-section">
+            <h3>SA TEAM</h3>
+            <div class="vrap_teams">
+                {% set teammatesFound = false %}
+                
+                {# On récupère l'ID de la team du joueur #}
+                {% set currentTeamId = player.getTeam() %}
+                
+                {% if teams[currentTeamId] is defined %}
+                    {% set currentTeamObj = teams[currentTeamId] %}
+                    
+                    {% for teammate in currentTeamObj.getPlayers() %}
+                        {% if teammate.getId() != player.getId() %}
+                            {% set teammatesFound = true %}
+                            <div class="column_player">
+                                <img src="{{ teammate.getPortrait() }}" alt="{{ teammate.getNickname() }}">
+                                <h3 class="teammate-name">{{ teammate.getNickname() }}</h3>
+                                
+                                <a href="{{ constant('BASE_URL') }}/player/{{ teammate.getId() }}">
+                                    <button type="button">DÉCOUVREZ {{ teammate.getNickname() }}</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                {% if not teammatesFound %}
+                    <p>Aucun coéquipier trouvé.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{# ========================================== #}
+{# CAS 2 : LISTE DES JOUEURS                  #}
+{# ========================================== #}
+{% else %}
+
+    <section class="players">
+        <div class="contenue_player">
+            <h2>LES PLAYERS DE LA LEAGUE</h2>
+            
+            {% if players is defined and players is not empty %}
+                <div class="vrap_teams"> 
+                    {% for playerItem in players %}
+                        <div class="column_player">
+                            <img src="{{ playerItem.getPortrait() }}" alt="Portrait">
+                            <h3>{{ playerItem.getNickname() }}</h3>
+                            
+                            <h4>
+                                {% set pTeamId = playerItem.getTeam() %}
+                                {% if teams[pTeamId] is defined %}
+                                    {{ teams[pTeamId].getName() }}
+                                {% else %}
+                                    Team #{{ pTeamId }}
+                                {% endif %}
+                            </h4>
+                            
+                            <a href="{{ constant('BASE_URL') }}/player/{{ playerItem.getId() }}">
+                                <button type="button">Découvrez {{ playerItem.getNickname() }}</button>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Aucun joueur trouvé.</p>
+            {% endif %}
+        </div>
+    </section>
+
+{% endif %}
+
+{% endblock %}

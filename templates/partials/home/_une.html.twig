@@ -1,0 +1,56 @@
+{# templates/partials/home/_une.html.twig #}
+
+{# --- SECTION TEAM A LA UNE --- #}
+<section class="team_une">
+    <h2>TEAM À LA UNE</h2>
+    <div class="row_une"> 
+        {% set teamUneId = 1 %}
+        
+        {% if teams[teamUneId] is defined %}
+            {% set teamUne = teams[teamUneId] %}
+            
+            <img class="img_une" src="{{ teamUne.getLogo() }}" alt="{{ teamUne.getName() }}">
+            
+            <div class="column_une">
+                <h3>{{ teamUne.getName() }}</h3>
+                <p>Les players</p>
+                
+                <div class="for_une">
+                    {# On boucle sur les joueurs de l'équipe #}
+                    {% for player in teamUne.getPlayers() %}
+                        <div class="team_tuiles">
+                            <img src="{{ player.getPortrait() }}" alt="{{ player.getNickname() }}">
+                            <p>{{ player.getNickname() }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{# --- SECTION PLAYERS A LA UNE --- #}
+<section class="player_une">
+    <h2>LES PLAYERS À LA UNE</h2>
+    <div class="row2_une"> 
+        {% set idsChoisis = [3, 14, 12] %}
+        
+        {% for playerId in idsChoisis %}
+            {# On vérifie si le joueur existe dans la liste 'playersById' envoyée par le contrôleur #}
+            {% if playersById[playerId] is defined %}
+                {% set player = playersById[playerId] %}
+                
+                <div class="player_tuiles">
+                    <img class="img_perso_une" src="{{ player.getPortrait() }}" alt="{{ player.getNickname() }}">
+                    <h3>{{ player.getNickname() }}</h3>
+                    
+                    {# On récupère le nom de la team du joueur #}
+                    {% set pTeamId = player.getTeam() %}
+                    {% if teams[pTeamId] is defined %}
+                        <h4>{{ teams[pTeamId].getName() }}</h4>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

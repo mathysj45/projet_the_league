@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{# CAS 1 : DÉTAIL D'UNE ÉQUIPE #}
+{% if team is defined and team is not null %}
+
+    <section class="teams">
+        <div class="contenue_teams">
+            <h2 class="team-detail-title">{{ team.getName() }}</h2>
+
+            <div class="vrap_teams">
+                {% set tPlayers = team.getPlayers() %}
+
+                {% if tPlayers is not empty %}
+                    {% for player in tPlayers %}
+                        <div class="column_teams">
+                            <img class="player-portrait" src="{{ player.getPortrait() }}" alt="{{ player.getNickname() }}">
+                            <h3 class="player-nickname">{{ player.getNickname() }}</h3>
+                            
+                            <a href="{{ constant('BASE_URL') }}/player/{{ player.getId() }}">
+                                <button type="button">DÉCOUVREZ {{ player.getNickname() }}</button>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-players-msg">Aucun joueur trouvé pour cette équipe.</p>
+                {% endif %}
+            </div>
+            
+            <div class="back-btn-container">
+                <a href="{{ constant('BASE_URL') }}/team" class="btn-back">RETOUR AUX ÉQUIPES</a>
+            </div>
+        </div>
+    </section>
+
+{# CAS 2 : LISTE DES ÉQUIPES #}
+{% else %}
+
+    <section class="teams">
+        <div class="contenue_teams">
+            <h2>LES TEAMS DE LA LEAGUE</h2>
+            <div class="vrap_teams">
+                {% for teamItem in teams %}
+                    <div class="column_teams">
+                        <img src="{{ teamItem.getLogo() }}" alt="{{ teamItem.getName() }}">
+                        
+                        <h3>{{ teamItem.getName() }}</h3>
+                        <h4>{{ teamItem.getDescription() }}</h4>
+                        
+                        <a href="{{ constant('BASE_URL') }}/team/{{ teamItem.getId() }}">
+                            <button type="button">Découvrez {{ teamItem.getName() }}</button>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endif %}
+
+{% endblock %}

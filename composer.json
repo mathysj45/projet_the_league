@@ -1,0 +1,18 @@
+{
+  "name": "user/projet_the_league",
+  "require": {
+    "twig/twig": "^3.22"
+  },
+  "autoload": {
+    "classmap": [
+      "controllers/",
+      "managers/",
+      "models/",
+      "services/",
+      "templates/"
+    ]
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^7.0"
+  }
+}

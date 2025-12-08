@@ -1,0 +1,41 @@
+{# templates/partials/home/_dernier.html.twig #}
+<section class="dernier">
+    <h2>LE DERNIER MATCH</h2>
+    <div class="matche_du_jour">
+        
+        {% if matches is defined and matches|length > 0 %}
+            {# On prend le premier match du tableau (le plus récent) #}
+            {% set lastMatch = matches[0] %}
+            
+            {% set winnerId = lastMatch.getWinner() %}
+            {% set t1Id = lastMatch.getTeam1() %}
+            {% set t2Id = lastMatch.getTeam2() %}
+
+            {% set classTeam1 = '' %}
+            {% set classTeam2 = '' %}
+
+            {# Logique du vainqueur #}
+            {% if winnerId != 0 %}
+                {% if winnerId == t1Id %}
+                    {% set classTeam1 = 'winner' %}
+                {% elseif winnerId == t2Id %}
+                    {% set classTeam2 = 'winner' %}
+                {% endif %}
+            {% endif %}
+
+            <h3>{{ lastMatch.getName() }}</h3>
+            <p>{{ lastMatch.getDate() }}</p>
+            
+            <div class="img_matche_du_jour">
+                {# On vérifie que les équipes existent bien dans le tableau 'teams' #}
+                {% if teams[t1Id] is defined %}
+                    <img src="{{ teams[t1Id].getLogo() }}" alt="Team 1" class="{{ classTeam1 }}">
+                {% endif %}
+
+                {% if teams[t2Id] is defined %}
+                    <img src="{{ teams[t2Id].getLogo() }}" alt="Team 2" class="{{ classTeam2 }}">
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</section>

@@ -19,7 +19,7 @@ class PageController extends AbstractController
             $playersById[$player->getId()] = $player;
         }
         
-        $this->render("home", [
+        $this->render("partials/home.html.twig", [
             "pageTitle" => "The League",
             "teams" => $teams,
             "players" => $players,
@@ -39,7 +39,7 @@ class PageController extends AbstractController
             $id = (int)$_GET['id'];
             $team = $teamManager->getTeamById($id);
 
-            $this->render("team", [
+            $this->render("partials/team.html.twig", [
                 "team" => $team,
                 "pageTitle" => "Détail de la team"
             ]);
@@ -48,7 +48,7 @@ class PageController extends AbstractController
         {
         $teams = $teamManager->getAllTeam();
         
-        $this->render("team", [
+        $this->render("partials/team.html.twig", [
             "teams" => $teams,
             "pageTitle" => "Les teams"
         ]);
@@ -71,7 +71,7 @@ class PageController extends AbstractController
 
             $teams = $teamManager->getAllTeam(); 
             $games = $gameManager->getAllGames();
-            $this->render("player", [
+            $this->render("partials/player.html.twig", [
                 "player" => $player,
                 "stats" => $stats,
                 "teams" => $teams,
@@ -84,7 +84,7 @@ class PageController extends AbstractController
             $players = $playerManager->getAllPlayers();
             $teams = $teamManager->getAllTeam(); 
 
-            $this->render("player", [
+            $this->render("partials/player.html.twig", [
                 "players" => $players,
                 "teams" => $teams,
                 "pageTitle" => "Les players"
@@ -107,7 +107,7 @@ class PageController extends AbstractController
             $game = $gameManager->getGameById($id); 
             $stats = $perfManager->getStatsByGameId($id); 
 
-            $this->render("match", [
+            $this->render("partials/match.html.twig", [
                 "match" => $game,
                 "stats" => $stats,
                 "pageTitle" => "Détails du match",
@@ -117,7 +117,7 @@ class PageController extends AbstractController
         else 
         {
             $games = $gameManager->getAllGames();
-            $this->render("match", [
+            $this->render("partials/match.html.twig", [
                 "matches" => $games,
                 "teams" => $teams,
                 "pageTitle" => "Les matchs"
@@ -127,6 +127,6 @@ class PageController extends AbstractController
     // --- ERREUR 404 ---
     public function notFound() : void
     {
-        $this->render("notFound", ["pageTitle" => "Page introuvable"]);
+        $this->render("partials/notFound.html.twig", ["pageTitle" => "Page introuvable"]);
     }
 }

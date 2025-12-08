@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{# ============================================================ #}
+{# CAS 1 : DÉTAIL D'UN MATCH (Si match est défini)              #}
+{# ============================================================ #}
+{% if match is defined and match is not null %}
+
+    {# 1. Définition des variables #}
+    {% set winnerId = match.getWinner() %}
+    {% set t1Id = match.getTeam1() %}
+    {% set t2Id = match.getTeam2() %}
+    
+    {# 2. Récupération des logos #}
+    {% set logo1 = teams[t1Id] is defined ? teams[t1Id].getLogo() : '' %}
+    {% set logo2 = teams[t2Id] is defined ? teams[t2Id].getLogo() : '' %}
+
+    {# 3. Logique CSS pour le vainqueur #}
+    {% set classTeam1 = '' %}
+    {% set classTeam2 = '' %}
+
+    {% if winnerId != 0 %}
+        {% if winnerId == t1Id %}
+            {% set classTeam1 = 'winner' %}
+        {% elseif winnerId == t2Id %}
+            {% set classTeam2 = 'winner' %}
+        {% endif %}
+    {% endif %}
+
+    <section class="match-detail-container">
+        
+        <h2 class="match-versus-title">{{ match.getName() }}</h2>
+        <div class="match-date-large">{{ match.getDate() }}</div>
+
+        <div class="versus-logos">
+            {% if logo1 %}
+                <div class="team-logo-wrapper">
+                    <img class="big-logo {{ classTeam1 }}" src="{{ logo1 }}" alt="Team 1">
+                    {% if classTeam1 == 'winner' %}
+                        <span class="winner-label">VICTOIRE</span>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if logo2 %}
+                <div class="team-logo-wrapper">
+                    <img class="big-logo {{ classTeam2 }}" src="{{ logo2 }}" alt="Team 2">
+                    {% if classTeam2 == 'winner' %}
+                        <span class="winner-label">VICTOIRE</span>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+
+        <h3 class="perf-section-title">LES PERFORMANCES</h3>
+
+        <table class="match-stats-table">
+            <thead>
+                <tr>
+                    <th>PLAYER</th>
+                    <th>TEAM</th>
+                    <th>POINTS</th>
+                    <th>ASSISTS</th>
+                    <th>VICTOIRE ?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if stats is defined and stats is not empty %}
+                    {% for stat in stats %}
+                        {# Logique : Est-ce que l'équipe du joueur est l'équipe gagnante ? #}
+                        {# Note : 'stat' est un tableau ici, donc on utilise stat.team_id #}
+                        {% set isWinner = (stat.team_id is defined and stat.team_id == winnerId) %}
+                        
+                        <tr>
+                            <td class="col-pink">{{ stat.nickname }}</td>
+                            <td class="col-yellow">{{ stat.team_name }}</td>
+                            <td class="col-white">{{ stat.points }}</td>
+                            <td class="col-white">{{ stat.assists }}</td>
+                            <td>
+                                {% if isWinner %}
+                                    <span class="col-green">Oui</span>
+                                {% else %}
+                                    <span class="col-red">Non</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="no-stat">Aucune performance disponible pour ce match.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div class="back-btn-container">
+            <a href="{{ constant('BASE_URL') }}/match" class="btn-back">RETOUR AUX MATCHS</a>
+        </div>
+
+    </section>
+
+{# ============================================================ #}
+{# CAS 2 : LISTE DES MATCHS (Sinon)                             #}
+{# ============================================================ #}
+{% else %}
+
+    <section class="matchs">
+        <div class="match_contenue">
+            <h2>LES MATCHS</h2>
+            
+            {% if matches is defined %}
+                {% for game in matches %}
+                    
+                    {# Calcul du vainqueur pour chaque match de la liste #}
+                    {% set winnerId = game.getWinner() %}
+                    {% set t1Id = game.getTeam1() %}
+                    {% set t2Id = game.getTeam2() %}
+
+                    {% set classTeam1 = '' %}
+                    {% set classTeam2 = '' %}
+
+                    {% if winnerId != 0 %}
+                        {% if winnerId == t1Id %}
+                            {% set classTeam1 = 'winner' %}
+                        {% elseif winnerId == t2Id %}
+                            {% set classTeam2 = 'winner' %}
+                        {% endif %}
+                    {% endif %}
+
+                    <div class="match">
+                        <h3>{{ game.getName() }}</h3>
+                        <p>{{ game.getDate() }}</p>
+                        
+                        <div class="match_img">
+                            {% if teams[t1Id] is defined %}
+                                <img src="{{ teams[t1Id].getLogo() }}" alt="Team 1" class="{{ classTeam1 }}">
+                            {% endif %}
+                        
+                            <span class="vs">VS</span>
+
+                            {% if teams[t2Id] is defined %}
+                                <img src="{{ teams[t2Id].getLogo() }}" alt="Team 2" class="{{ classTeam2 }}">
+                            {% endif %}
+                        </div>
+                        
+                        <a href="{{ constant('BASE_URL') }}/match/{{ game.getId() }}" class="button_detail">
+                            <button type="button">Détails du match</button>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+
+{% endif %}
+
+{% endblock %}
