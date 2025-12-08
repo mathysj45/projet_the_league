@@ -506,7 +506,7 @@ img.winner {
     border-collapse: collapse; 
     border: 0.2px solid #1c2541;
     background-color: transparent;
-    min-height: 200px;
+    
     vertical-align: top;
 }
 
